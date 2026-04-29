@@ -1,0 +1,6 @@
+We are hiring an AI Hiring Platform Engineer with 4+ years of experience in Python, Django, SQL, NLP, and communication.
+Responsibilities:
+- Build ATS AI services
+- Design screening and interview intelligence flows
+- Improve recruiter automation and fairness
+

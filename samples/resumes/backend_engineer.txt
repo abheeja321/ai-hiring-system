@@ -1,0 +1,20 @@
+Summary
+Backend engineer with 5 years of experience building Django, Python, SQL and AWS systems.
+
+Skills
+Python
+Django
+SQL
+AWS
+Communication
+
+Experience
+Acme Corp - Senior Software Engineer 2020 2024
+Nova Labs - Software Engineer 2018 2020
+
+Education
+B.Tech in Computer Science
+
+Projects
+Built an applicant tracking system with semantic matching.
+

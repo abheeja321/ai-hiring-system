@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Results</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+    <main class="shell">
+        <section class="hero">
+            <p class="eyebrow">Pipeline Result</p>
+            <h1>{{ hiring_run.candidate.full_name }} for {{ hiring_run.job.title }}</h1>
+            <p class="lede">Decision: <strong>{{ hiring_run.decision }}</strong> with final score <strong>{{ hiring_run.final_score }}</strong>.</p>
+            <p class="lede">Resume source: <strong>{{ resume_source|default:result.resume_source }}</strong></p>
+            <a class="back-link" href="/">Back to dashboard</a>
+        </section>
+
+        <section class="result-grid">
+            <article class="metric-card"><h2>ATS</h2><p>{{ result.ats.final_score }}</p><span>{{ result.ats.shortlist_band }}</span></article>
+            <article class="metric-card"><h2>Eligibility</h2><p>{{ result.eligibility.status }}</p><span>AI screening gate</span></article>
+            <article class="metric-card"><h2>Screening</h2><p>{{ result.screening.screening_score }}</p><span>Voice + fit</span></article>
+            <article class="metric-card"><h2>Interview</h2><p>{{ result.interview.interview_score }}</p><span>HR + Tech + Machine Test</span></article>
+            <article class="metric-card"><h2>Behavior</h2><p>{{ result.behavior.behavior_score }}</p><span>Fairness-aware</span></article>
+        </section>
+
+        <section class="panel">
+            <h2>Explainable Output</h2>
+            <pre>{{ result }}</pre>
+        </section>
+
+        <section class="panel">
+            <h2>HR Screening Question Pack</h2>
+            <p>Role family: <strong>{{ result.screening.question_pack.role_family }}</strong> | Questions: <strong>{{ result.screening.question_pack.question_count }}</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Mandatory</th>
+                        <th>Importance</th>
+                        <th>Question</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in result.screening.question_pack.questions %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.mandatory }}</td>
+                        <td>{{ item.importance }}</td>
+                        <td>{{ item.question }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
