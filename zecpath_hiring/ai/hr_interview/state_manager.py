@@ -23,7 +23,7 @@ class InterviewState(BaseModel):
     # State tracking
     can_follow_up: bool = True
     current_follow_up_count: int = 0
-    max_follow_ups_per_category: int = 1
+    max_follow_ups_per_category: int = 2  # Allowing up to 2 follow-ups dynamically
 
     def add_turn(self, speaker: str, content: str, category: Optional[HRCategory] = None):
         turn_id = len(self.history) + 1
@@ -39,3 +39,15 @@ class InterviewState(BaseModel):
         if category not in self.asked_categories:
             self.asked_categories.append(category)
             self.current_follow_up_count = 0  # Reset follow-ups for new category
+
+    def increment_follow_up(self) -> bool:
+        """
+        Increments the follow-up counter and returns True if a follow-up is allowed.
+        Prevents repetitive questioning by capping at max_follow_ups_per_category.
+        """
+        if not self.can_follow_up:
+            return False
+        if self.current_follow_up_count >= self.max_follow_ups_per_category:
+            return False
+        self.current_follow_up_count += 1
+        return True

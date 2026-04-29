@@ -3,6 +3,7 @@ from typing import List, Optional
 from .categories import ExperienceLevel, HRCategory, InterviewPhase, RoleType
 from .question_bank import QuestionBank
 from .state_manager import InterviewState
+from .follow_up_engine import FollowUpEngine, FollowUpType
 
 
 class FlowController:
@@ -13,6 +14,7 @@ class FlowController:
     def __init__(self, state: InterviewState, experience_level: ExperienceLevel, role_type: RoleType):
         self.state = state
         self.question_bank = QuestionBank(experience_level, role_type)
+        self.follow_up_engine = FollowUpEngine()
 
     def determine_next_action(self) -> dict:
         """
@@ -29,6 +31,33 @@ class FlowController:
             return self._handle_closing()
         
         return {"action": "end", "message": "The interview is complete."}
+
+    def process_candidate_response(self, response_text: str, current_category_context: str) -> Optional[dict]:
+        """
+        Processes a candidate's response. Uses the FollowUpEngine to check if a follow-up
+        is warranted. If so, and the state allows it, returns a prompt for the LLM to generate
+        the follow-up. Otherwise, returns None (meaning the flow should proceed to the next base question).
+        """
+        # Save response to history
+        self.state.add_turn("Candidate", response_text, None)
+        
+        # Don't ask follow-ups during Intro or Closing phases
+        if self.state.current_phase in [InterviewPhase.INTRODUCTION, InterviewPhase.CLOSING]:
+            return None
+            
+        follow_up_type = self.follow_up_engine.analyze_response(response_text)
+        
+        if follow_up_type != FollowUpType.SUFFICIENT:
+            if self.state.increment_follow_up():
+                instruction = self.follow_up_engine.get_follow_up_instruction(follow_up_type, current_category_context)
+                return {
+                    "action": "follow_up",
+                    "follow_up_type": follow_up_type.value,
+                    "system_instruction": "You are a professional HR recruiter. Ask a natural follow-up question based on the candidate's last answer.",
+                    "prompt_content": instruction
+                }
+                
+        return None
 
     def _handle_introduction(self) -> dict:
         if HRCategory.SELF_INTRO not in self.state.asked_categories:
