@@ -71,3 +71,19 @@ def run_demo_pipeline(request):
 
     context["latest_runs"] = HiringRun.objects.select_related("candidate", "job").order_by("-created_at")[:10]
     return render(request, "dashboard/home.html", context)
+
+
+def job_search(request):
+    query = request.GET.get("q", "")
+    if query:
+        jobs = JobProfile.objects.filter(title__icontains=query).order_by("-created_at")
+    else:
+        jobs = JobProfile.objects.all().order_by("-created_at")
+    
+    return render(request, "dashboard/job_search.html", {"jobs": jobs, "query": query})
+
+
+def job_detail(request, pk):
+    from django.shortcuts import get_object_or_404
+    job = get_object_or_404(JobProfile, pk=pk)
+    return render(request, "dashboard/job_detail.html", {"job": job})
