@@ -18,30 +18,68 @@ class FollowUpEngine:
         # Basic heuristics markers
         self.vagueness_markers = ["stuff", "things", "did some", "worked on", "helped out", "was involved"]
         self.confidence_markers = ["successfully", "led", "managed", "achieved", "improved", "architected", "resolved"]
+        self.structure_markers = [
+            "situation",
+            "task",
+            "action",
+            "result",
+            "first",
+            "then",
+            "finally",
+            "because",
+            "measured",
+            "outcome",
+        ]
+        self.detail_markers = [
+            "percent",
+            "%",
+            "users",
+            "customers",
+            "stakeholders",
+            "team",
+            "deadline",
+            "metrics",
+            "reduced",
+            "increased",
+            "launched",
+        ]
         
     def analyze_response(self, response_text: str) -> FollowUpType:
         """
         Determines the type of follow-up needed based on word count and keyword heuristics.
         """
-        word_count = len(response_text.split())
+        words = re.findall(r"\b[\w%.-]+\b", response_text)
+        word_count = len(words)
         lower_response = response_text.lower()
+        if word_count == 0:
+            return FollowUpType.CLARIFICATION
         
         # 1. Check for extreme brevity or vagueness -> CLARIFICATION
-        if word_count < 20:
-            return FollowUpType.CLARIFICATION
-            
         vague_count = sum(1 for marker in self.vagueness_markers if marker in lower_response)
-        if word_count < 40 and vague_count > 1:
+        detail_count = sum(1 for marker in self.detail_markers if marker in lower_response)
+        structure_count = sum(1 for marker in self.structure_markers if marker in lower_response)
+        confidence_count = sum(1 for marker in self.confidence_markers if marker in lower_response)
+
+        if word_count < 12:
+            return FollowUpType.CLARIFICATION
+
+        if vague_count > 1 and detail_count == 0:
+            return FollowUpType.CLARIFICATION
+
+        if word_count < 25 and detail_count == 0 and structure_count == 0:
             return FollowUpType.CLARIFICATION
 
         # 2. Check for high confidence and detail -> SCENARIO_BASED
-        confidence_count = sum(1 for marker in self.confidence_markers if marker in lower_response)
         if word_count > 30 and confidence_count >= 2:
             return FollowUpType.SCENARIO_BASED
 
+        # Complete structured answers should not receive a mechanical follow-up.
+        if word_count >= 35 and structure_count >= 3 and detail_count >= 2:
+            return FollowUpType.SUFFICIENT
+
         # 3. Standard response that might lack structural depth (STAR method) -> DEEPENING
         # If it's a medium length response without strong confident action verbs
-        if 20 <= word_count <= 60:
+        if 12 <= word_count <= 60:
             return FollowUpType.DEEPENING
 
         # 4. If none of the above, it's a comprehensive answer -> SUFFICIENT

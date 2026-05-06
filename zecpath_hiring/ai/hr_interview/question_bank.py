@@ -20,6 +20,8 @@ class QuestionBank:
             HRCategory.CAREER_JOURNEY: "Ask about a significant transition or key learning from their past experiences.",
             HRCategory.STRENGTHS_WEAKNESSES: "Ask the candidate to discuss a core strength and an area they are actively working to improve.",
             HRCategory.TEAMWORK_CULTURE: "Ask a behavioral question about how they handle conflicts or collaborate in a team.",
+            HRCategory.APTITUDE_LOGIC: "Ask a reasoning-based question that requires the candidate to explain assumptions, compare options, and reach a clear conclusion.",
+            HRCategory.SITUATIONAL_JUDGMENT: "Present a workplace scenario with incomplete information and ask the candidate how they would respond, prioritize, and communicate.",
             HRCategory.CAREER_GOALS: "Ask where they see their career heading in the next 3-5 years and how this role fits.",
             HRCategory.AVAILABILITY_COMMITMENT: "Ask about their availability to start and long-term commitment to the role.",
         }
@@ -42,7 +44,13 @@ class QuestionBank:
         base_instruction = self._get_base_prompt(category)
         
         # Only apply role/experience modifiers to certain categories where it makes sense
-        if category in [HRCategory.CAREER_JOURNEY, HRCategory.TEAMWORK_CULTURE, HRCategory.STRENGTHS_WEAKNESSES]:
+        if category in [
+            HRCategory.CAREER_JOURNEY,
+            HRCategory.TEAMWORK_CULTURE,
+            HRCategory.STRENGTHS_WEAKNESSES,
+            HRCategory.APTITUDE_LOGIC,
+            HRCategory.SITUATIONAL_JUDGMENT,
+        ]:
             instruction = f"{base_instruction} {self._get_experience_modifier()} {self._get_role_modifier()}"
         else:
             instruction = base_instruction

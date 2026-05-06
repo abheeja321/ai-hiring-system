@@ -6,6 +6,8 @@ class HRCategory(str, Enum):
     CAREER_JOURNEY = "Career journey"
     STRENGTHS_WEAKNESSES = "Strengths & weaknesses"
     TEAMWORK_CULTURE = "Teamwork & culture fit"
+    APTITUDE_LOGIC = "Aptitude logic"
+    SITUATIONAL_JUDGMENT = "Situational judgment"
     CAREER_GOALS = "Career goals"
     AVAILABILITY_COMMITMENT = "Availability & commitment"
 

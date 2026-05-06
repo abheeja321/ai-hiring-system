@@ -1,0 +1,2400 @@
+{
+  "source": "Dentist Models.pdf",
+  "role_count": 81,
+  "roles": [
+    {
+      "id": "dentist_001",
+      "source_order": 1,
+      "title": "General Dentist",
+      "overview": "A General Dentist provides comprehensive dental care for patients of all ages. They diagnose, treat, and prevent oral health issues such as tooth decay, gum disease, and infections while promoting overall oral hygiene.",
+      "responsibilities": [
+        "Examine patients’ teeth, gums, and oral tissues",
+        "Diagnose dental conditions using X-rays and clinical tests",
+        "Perform procedures such as fillings, extractions, crowns, and bridges",
+        "Conduct root canal treatments",
+        "Provide preventive care such as cleanings and fluoride treatments",
+        "Educate patients about oral hygiene and dental health",
+        "Maintain patient records and treatment plans",
+        "Refer patients to dental specialists when needed"
+      ],
+      "required_qualifications": [
+        "Bachelor of Dental Surgery (BDS)",
+        "Dental license from dental regulatory authority",
+        "Clinical experience preferred"
+      ],
+      "key_skills": [
+        "Clinical diagnosis",
+        "Manual dexterity",
+        "Patient communication",
+        "Treatment planning",
+        "Infection control"
+      ],
+      "work_settings": [
+        "Private clinics",
+        "Dental hospitals",
+        "Community health centers"
+      ]
+    },
+    {
+      "id": "dentist_002",
+      "source_order": 2,
+      "title": "Family Dentist",
+      "overview": "A Family Dentist provides dental care for patients of all age groups, from children to elderly individuals. They focus on long-term oral health management for families.",
+      "responsibilities": [
+        "Provide routine dental checkups for all family members",
+        "Diagnose and treat common dental problems",
+        "Provide pediatric dental care",
+        "Manage dental issues related to aging such as tooth loss",
+        "Provide preventive treatments like sealants and fluoride",
+        "Maintain long-term patient relationships"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Experience in treating patients across age groups"
+      ],
+      "key_skills": [
+        "Pediatric and adult patient management",
+        "Preventive dentistry",
+        "Communication with families",
+        "Patient education"
+      ],
+      "work_settings": [
+        "Family dental clinics",
+        "Private practices",
+        "Community clinics"
+      ]
+    },
+    {
+      "id": "dentist_003",
+      "source_order": 3,
+      "title": "Cosmetic Dentist",
+      "overview": "A Cosmetic Dentist specializes in improving the appearance of teeth, gums, and smiles through aesthetic dental procedures.",
+      "responsibilities": [
+        "Perform teeth whitening treatments",
+        "Design and apply dental veneers",
+        "Perform smile makeovers",
+        "Provide dental bonding and contouring",
+        "Correct minor alignment issues",
+        "Replace missing teeth with implants or crowns",
+        "Develop personalized cosmetic treatment plans"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Training in cosmetic dentistry procedures",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Aesthetic dental design",
+        "Precision and attention to detail",
+        "Patient consultation",
+        "Knowledge of cosmetic materials"
+      ],
+      "work_settings": [
+        "Cosmetic dental clinics",
+        "Private practices",
+        "Dental aesthetic centers"
+      ]
+    },
+    {
+      "id": "dentist_004",
+      "source_order": 4,
+      "title": "Restorative Dentist",
+      "overview": "A Restorative Dentist focuses on repairing damaged or missing teeth to restore normal function and appearance.",
+      "responsibilities": [
+        "Treat cavities and tooth damage",
+        "Perform dental fillings, crowns, and bridges",
+        "Restore fractured teeth",
+        "Replace missing teeth with implants or dentures",
+        "Repair worn or damaged restorations",
+        "Work with dental laboratories for prosthetics"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Training in restorative procedures"
+      ],
+      "key_skills": [
+        "Prosthetic restoration",
+        "Treatment planning",
+        "Precision and hand skills",
+        "Knowledge of dental materials"
+      ],
+      "work_settings": [
+        "Dental clinics",
+        "Dental hospitals",
+        "Prosthetic dental centers"
+      ]
+    },
+    {
+      "id": "dentist_005",
+      "source_order": 5,
+      "title": "Preventive Dentist",
+      "overview": "A Preventive Dentist focuses on preventing dental diseases and promoting oral health through early detection, education, and preventive treatments.",
+      "responsibilities": [
+        "Conduct routine oral examinations",
+        "Identify early signs of tooth decay and gum disease",
+        "Provide professional cleaning and fluoride treatments",
+        "Apply dental sealants",
+        "Educate patients on oral hygiene practices",
+        "Develop preventive dental care programs"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Knowledge of preventive dentistry"
+      ],
+      "key_skills": [
+        "Early diagnosis",
+        "Patient education",
+        "Preventive treatment planning",
+        "Public health awareness"
+      ],
+      "work_settings": [
+        "Dental clinics",
+        "Schools",
+        "Community health programs"
+      ]
+    },
+    {
+      "id": "dentist_006",
+      "source_order": 6,
+      "title": "Emergency Dentist",
+      "overview": "An Emergency Dentist provides urgent dental care for patients experiencing severe pain, trauma, infections, or dental injuries.",
+      "responsibilities": [
+        "Treat dental trauma and broken teeth",
+        "Manage severe tooth pain and infections",
+        "Perform emergency extractions",
+        "Treat abscesses and swelling",
+        "Provide immediate pain relief",
+        "Stabilize dental injuries before specialist referral"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Experience in emergency dental procedures"
+      ],
+      "key_skills": [
+        "Quick clinical decision-making",
+        "Trauma management",
+        "Pain management",
+        "Emergency procedures"
+      ],
+      "work_settings": [
+        "Emergency dental clinics",
+        "Hospitals",
+        "Trauma centers"
+      ]
+    },
+    {
+      "id": "dentist_007",
+      "source_order": 7,
+      "title": "Hospital Dentist",
+      "overview": "A Hospital Dentist provides dental care in hospital settings and collaborates with medical teams to manage complex oral health conditions.",
+      "responsibilities": [
+        "Treat patients with complex dental conditions",
+        "Manage dental infections affecting overall health",
+        "Provide dental care to hospitalized patients",
+        "Assist in oral surgeries",
+        "Collaborate with surgeons and physicians",
+        "Manage dental trauma cases"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Hospital dentistry experience preferred"
+      ],
+      "key_skills": [
+        "Clinical diagnosis",
+        "Surgical assistance",
+        "Interdisciplinary collaboration",
+        "Infection control"
+      ],
+      "work_settings": [
+        "Government hospitals",
+        "Private hospitals",
+        "Teaching hospitals"
+      ]
+    },
+    {
+      "id": "dentist_008",
+      "source_order": 8,
+      "title": "Consultant Dentist",
+      "overview": "A Consultant Dentist is a highly experienced dental professional who provides expert advice, advanced treatments, and clinical guidance to other dentists or healthcare institutions.",
+      "responsibilities": [
+        "Provide expert dental consultations",
+        "Develop complex treatment plans",
+        "Supervise junior dentists",
+        "Perform advanced dental procedures",
+        "Participate in multidisciplinary case discussions",
+        "Train dental staff"
+      ],
+      "required_qualifications": [
+        "BDS with advanced specialization (often MDS)",
+        "Dental license",
+        "Extensive clinical experience"
+      ],
+      "key_skills": [
+        "Advanced diagnostic expertise",
+        "Leadership and mentoring",
+        "Clinical decision-making",
+        "Complex case management"
+      ],
+      "work_settings": [
+        "Specialist dental clinics",
+        "Hospitals",
+        "Dental teaching institutions"
+      ]
+    },
+    {
+      "id": "dentist_009",
+      "source_order": 9,
+      "title": "Private Practice Dentist",
+      "overview": "A Private Practice Dentist owns or operates an independent dental clinic and provides comprehensive dental services to patients.",
+      "responsibilities": [
+        "Diagnose and treat dental conditions",
+        "Perform general and preventive dental procedures",
+        "Manage dental clinic operations",
+        "Hire and supervise dental staff",
+        "Maintain patient records and appointments",
+        "Ensure compliance with healthcare regulations"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Business management skills preferred"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Business management",
+        "Patient relationship management",
+        "Leadership"
+      ],
+      "work_settings": [
+        "Private dental clinics",
+        "Multi-specialty dental centers"
+      ]
+    },
+    {
+      "id": "dentist_010",
+      "source_order": 10,
+      "title": "Community Dentist",
+      "overview": "A Community Dentist focuses on improving oral health in communities through preventive care, education, and outreach programs.",
+      "responsibilities": [
+        "Conduct community dental health programs",
+        "Provide dental screenings in schools and rural areas",
+        "Educate the public on oral hygiene",
+        "Implement preventive dental programs",
+        "Treat basic dental conditions in underserved populations",
+        "Collaborate with public health organizations"
+      ],
+      "required_qualifications": [
+        "BDS degree",
+        "Dental license",
+        "Training in public health dentistry preferred"
+      ],
+      "key_skills": [
+        "Public health awareness",
+        "Community engagement",
+        "Preventive dentistry",
+        "Communication and education"
+      ],
+      "work_settings": [
+        "Public health departments",
+        "NGOs",
+        "Community health centers",
+        "Rural healthcare programs"
+      ]
+    },
+    {
+      "id": "dentist_011",
+      "source_order": 11,
+      "title": "Orthodontist",
+      "overview": "An Orthodontist specializes in diagnosing, preventing, and correcting misaligned teeth and jaw irregularities. They use orthodontic appliances such as braces, clear aligners, and retainers to improve dental alignment and bite function.",
+      "responsibilities": [
+        "Diagnose teeth and jaw alignment problems",
+        "Design orthodontic treatment plans",
+        "Install and adjust braces and aligners",
+        "Monitor progress of orthodontic treatments",
+        "Correct bite problems such as overbite and underbite",
+        "Provide retainers after treatment completion",
+        "Educate patients about orthodontic care"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "MDS in Orthodontics",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Precision and attention to detail",
+        "Facial growth analysis",
+        "Treatment planning",
+        "Patient communication"
+      ],
+      "work_settings": [
+        "Orthodontic clinics",
+        "Dental hospitals",
+        "Multi-specialty dental centers"
+      ]
+    },
+    {
+      "id": "dentist_012",
+      "source_order": 12,
+      "title": "Oral and Maxillofacial Surgeon",
+      "overview": "An Oral and Maxillofacial Surgeon performs surgical procedures involving the mouth, jaws, face, and neck. They manage complex dental extractions, facial trauma, oral cancers, and reconstructive surgeries.",
+      "responsibilities": [
+        "Perform complex tooth extractions",
+        "Conduct jaw surgeries and facial reconstruction",
+        "Treat facial trauma and fractures",
+        "Perform dental implant surgeries",
+        "Diagnose and treat oral tumors and cysts",
+        "Manage cleft lip and palate conditions",
+        "Administer surgical anesthesia when required"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral and Maxillofacial Surgery",
+        "Surgical training and license"
+      ],
+      "key_skills": [
+        "Advanced surgical skills",
+        "Anatomical knowledge",
+        "Emergency management",
+        "Surgical planning"
+      ],
+      "work_settings": [
+        "Hospitals",
+        "Surgical centers",
+        "Dental specialty clinics"
+      ]
+    },
+    {
+      "id": "dentist_013",
+      "source_order": 13,
+      "title": "Endodontist",
+      "overview": "An Endodontist specializes in diagnosing and treating diseases of the dental pulp and tissues surrounding the roots of teeth. They primarily perform root canal treatments and manage dental pain related to nerve infections.",
+      "responsibilities": [
+        "Diagnose pulp infections and dental pain",
+        "Perform root canal treatments",
+        "Treat cracked or injured teeth",
+        "Perform endodontic retreatment procedures",
+        "Manage dental trauma affecting tooth pulp",
+        "Use advanced imaging for diagnosis"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Endodontics / Conservative Dentistry",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Microscopic precision",
+        "Pain management",
+        "Root canal therapy",
+        "Diagnostic imaging interpretation"
+      ],
+      "work_settings": [
+        "Endodontic clinics",
+        "Dental hospitals",
+        "Specialty dental centers"
+      ]
+    },
+    {
+      "id": "dentist_014",
+      "source_order": 14,
+      "title": "Periodontist",
+      "overview": "A Periodontist specializes in diagnosing and treating gum diseases and conditions affecting the supporting structures of teeth.",
+      "responsibilities": [
+        "Diagnose gum diseases such as gingivitis and periodontitis",
+        "Perform scaling and root planing",
+        "Conduct gum surgeries",
+        "Treat gum recession",
+        "Perform bone grafting procedures",
+        "Place dental implants",
+        "Manage periodontal infections"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Periodontology",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Surgical techniques",
+        "Infection control",
+        "Implant placement",
+        "Periodontal treatment planning"
+      ],
+      "work_settings": [
+        "Periodontal specialty clinics",
+        "Dental hospitals",
+        "Implant centers"
+      ]
+    },
+    {
+      "id": "dentist_015",
+      "source_order": 15,
+      "title": "Prosthodontist",
+      "overview": "A Prosthodontist specializes in restoring and replacing missing teeth using dental prosthetics such as crowns, bridges, dentures, and implants.",
+      "responsibilities": [
+        "Design and fit dental crowns and bridges",
+        "Provide complete and partial dentures",
+        "Restore dental implants",
+        "Rehabilitate patients with missing teeth",
+        "Manage complex restorative cases",
+        "Work with dental laboratories for prosthetic design"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Prosthodontics",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Prosthetic design",
+        "Bite reconstruction",
+        "Dental materials expertise",
+        "Precision dentistry"
+      ],
+      "work_settings": [
+        "Prosthodontic clinics",
+        "Dental hospitals",
+        "Implant and restoration centers"
+      ]
+    },
+    {
+      "id": "dentist_016",
+      "source_order": 16,
+      "title": "Pediatric Dentist / Pedodontist",
+      "overview": "A Pediatric Dentist specializes in providing dental care for infants, children, and adolescents, including those with special healthcare needs.",
+      "responsibilities": [
+        "Diagnose and treat dental issues in children",
+        "Perform preventive treatments such as fluoride and sealants",
+        "Manage early childhood cavities",
+        "Monitor dental growth and development",
+        "Educate parents about children's oral hygiene",
+        "Manage dental anxiety in children"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Pediatric Dentistry (Pedodontics)",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Child behavior management",
+        "Preventive dentistry",
+        "Pediatric treatment techniques",
+        "Communication with parents and children"
+      ],
+      "work_settings": [
+        "Pediatric dental clinics",
+        "Children's hospitals",
+        "Family dental practices"
+      ]
+    },
+    {
+      "id": "dentist_017",
+      "source_order": 17,
+      "title": "Oral Pathologist",
+      "overview": "An Oral Pathologist specializes in diagnosing diseases affecting the oral cavity, jaws, and surrounding tissues through laboratory analysis and microscopic examination.",
+      "responsibilities": [
+        "Analyze tissue samples and biopsies",
+        "Diagnose oral cancers and lesions",
+        "Study oral infections and systemic diseases affecting the mouth",
+        "Conduct laboratory research",
+        "Provide diagnostic reports to dentists and surgeons",
+        "Collaborate with medical pathologists"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral Pathology",
+        "Laboratory training"
+      ],
+      "key_skills": [
+        "Histopathology analysis",
+        "Microscopic examination",
+        "Diagnostic interpretation",
+        "Research skills"
+      ],
+      "work_settings": [
+        "Diagnostic laboratories",
+        "Dental colleges",
+        "Research institutions"
+      ]
+    },
+    {
+      "id": "dentist_018",
+      "source_order": 18,
+      "title": "Oral Radiologist",
+      "overview": "An Oral Radiologist specializes in interpreting dental imaging such as X-rays, CT scans, and other diagnostic imaging techniques related to oral and maxillofacial structures.",
+      "responsibilities": [
+        "Interpret dental radiographs and scans",
+        "Diagnose oral diseases through imaging",
+        "Perform cone beam CT scans",
+        "Provide imaging reports for dentists and surgeons",
+        "Ensure radiation safety protocols",
+        "Maintain imaging equipment"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral Medicine and Radiology",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Radiographic interpretation",
+        "Diagnostic imaging",
+        "Radiation safety",
+        "Clinical diagnosis"
+      ],
+      "work_settings": [
+        "Dental diagnostic centers",
+        "Hospitals",
+        "Dental colleges"
+      ]
+    },
+    {
+      "id": "dentist_019",
+      "source_order": 19,
+      "title": "Public Health Dentist",
+      "overview": "A Public Health Dentist focuses on improving oral health at the community and population level through preventive programs, education, and public health initiatives.",
+      "responsibilities": [
+        "Develop community oral health programs",
+        "Conduct epidemiological studies on dental diseases",
+        "Provide dental screenings in communities",
+        "Promote oral hygiene awareness",
+        "Implement preventive dental care programs",
+        "Collaborate with government health agencies"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Public Health Dentistry",
+        "Training in epidemiology or community dentistry"
+      ],
+      "key_skills": [
+        "Public health planning",
+        "Community outreach",
+        "Data analysis",
+        "Health education"
+      ],
+      "work_settings": [
+        "Government health departments",
+        "NGOs",
+        "Public health organizations"
+      ]
+    },
+    {
+      "id": "dentist_020",
+      "source_order": 20,
+      "title": "Oral Medicine Specialist",
+      "overview": "An Oral Medicine Specialist diagnoses and manages complex oral diseases that may be linked to systemic health conditions.",
+      "responsibilities": [
+        "Diagnose oral mucosal diseases",
+        "Treat chronic oral pain disorders",
+        "Manage conditions such as oral ulcers and infections",
+        "Evaluate oral manifestations of systemic diseases",
+        "Coordinate treatment with medical specialists",
+        "Provide non-surgical oral disease management"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral Medicine",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Advanced clinical diagnosis",
+        "Medical-dental integration",
+        "Patient management",
+        "Disease monitoring"
+      ],
+      "work_settings": [
+        "Dental hospitals",
+        "Specialty clinics",
+        "Medical research institutions"
+      ]
+    },
+    {
+      "id": "dentist_021",
+      "source_order": 21,
+      "title": "Implantologist",
+      "overview": "An Implantologist specializes in the placement and restoration of dental implants to replace missing teeth. They restore oral function and aesthetics by surgically inserting artificial tooth roots into the jawbone.",
+      "responsibilities": [
+        "Evaluate patients for dental implant suitability",
+        "Perform dental implant placement surgeries",
+        "Conduct bone grafting procedures when necessary",
+        "Restore implants with crowns, bridges, or dentures",
+        "Monitor implant healing and osseointegration",
+        "Manage complications such as implant failure or infection",
+        "Educate patients on implant care and maintenance"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "MDS in Prosthodontics / Oral Surgery (preferred)",
+        "Certification or training in implant dentistry",
+        "Valid dental license"
+      ],
+      "key_skills": [
+        "Surgical precision",
+        "Knowledge of implant systems",
+        "Treatment planning",
+        "3D imaging interpretation"
+      ],
+      "work_settings": [
+        "Implant specialty clinics",
+        "Dental hospitals",
+        "Multi-specialty dental centers"
+      ]
+    },
+    {
+      "id": "dentist_022",
+      "source_order": 22,
+      "title": "Maxillofacial Trauma Surgeon",
+      "overview": "A Maxillofacial Trauma Surgeon treats injuries affecting the facial bones, jaws, and oral structures. These surgeons handle trauma cases resulting from accidents, sports injuries, or violence.",
+      "responsibilities": [
+        "Diagnose facial fractures and trauma injuries",
+        "Perform surgical repair of jaw and facial bone fractures",
+        "Manage soft tissue injuries in the oral and facial region",
+        "Reconstruct facial structures after trauma",
+        "Collaborate with emergency physicians and plastic surgeons",
+        "Manage post-surgical recovery and rehabilitation"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral and Maxillofacial Surgery",
+        "Advanced trauma surgery training"
+      ],
+      "key_skills": [
+        "Trauma management",
+        "Surgical reconstruction",
+        "Emergency decision-making",
+        "Anatomical expertise"
+      ],
+      "work_settings": [
+        "Trauma hospitals",
+        "Emergency departments",
+        "Surgical centers"
+      ]
+    },
+    {
+      "id": "dentist_023",
+      "source_order": 23,
+      "title": "Cleft Lip and Palate Surgeon",
+      "overview": "A Cleft Lip and Palate Surgeon specializes in surgical correction of congenital deformities of the lip and palate, helping restore normal function and appearance.",
+      "responsibilities": [
+        "Diagnose cleft lip and palate conditions",
+        "Perform reconstructive surgeries to repair defects",
+        "Coordinate treatment with orthodontists and speech therapists",
+        "Monitor facial growth and development in children",
+        "Provide long-term treatment plans",
+        "Manage postoperative care and rehabilitation"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral and Maxillofacial Surgery",
+        "Specialized training in craniofacial surgery"
+      ],
+      "key_skills": [
+        "Reconstructive surgery",
+        "Pediatric patient management",
+        "Multidisciplinary coordination",
+        "Surgical precision"
+      ],
+      "work_settings": [
+        "Children's hospitals",
+        "Craniofacial centers",
+        "Specialized surgical clinics"
+      ]
+    },
+    {
+      "id": "dentist_024",
+      "source_order": 24,
+      "title": "Oral Cancer Surgeon",
+      "overview": "An Oral Cancer Surgeon diagnoses and surgically treats cancers affecting the oral cavity, jaw, and surrounding tissues.",
+      "responsibilities": [
+        "Diagnose oral tumors and cancerous lesions",
+        "Perform biopsies and cancer staging procedures",
+        "Surgically remove tumors and affected tissues",
+        "Reconstruct oral structures after tumor removal",
+        "Collaborate with oncologists and radiation specialists",
+        "Monitor patients for cancer recurrence"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral and Maxillofacial Surgery",
+        "Oncology training or fellowship"
+      ],
+      "key_skills": [
+        "Cancer diagnosis",
+        "Surgical oncology",
+        "Reconstructive surgery",
+        "Patient counseling"
+      ],
+      "work_settings": [
+        "Cancer hospitals",
+        "Surgical oncology centers",
+        "Medical research hospitals"
+      ]
+    },
+    {
+      "id": "dentist_025",
+      "source_order": 25,
+      "title": "TMJ Specialist",
+      "overview": "A TMJ Specialist diagnoses and treats disorders affecting the temporomandibular joint (TMJ), which connects the jaw to the skull.",
+      "responsibilities": [
+        "Diagnose TMJ disorders and jaw pain",
+        "Treat jaw dysfunction and joint inflammation",
+        "Perform TMJ corrective surgeries when required",
+        "Provide bite correction treatments",
+        "Manage chronic jaw pain conditions",
+        "Recommend physical therapy or appliances such as splints"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Oral and Maxillofacial Surgery / Prosthodontics / Oral Medicine",
+        "Specialized TMJ training"
+      ],
+      "key_skills": [
+        "Joint disorder diagnosis",
+        "Pain management",
+        "Surgical treatment planning",
+        "Bite analysis"
+      ],
+      "work_settings": [
+        "Dental specialty clinics",
+        "Hospitals",
+        "Pain management centers"
+      ]
+    },
+    {
+      "id": "dentist_026",
+      "source_order": 26,
+      "title": "Dental Anesthesiologist",
+      "overview": "A Dental Anesthesiologist specializes in administering anesthesia and sedation for dental procedures, ensuring patient comfort and safety during complex treatments.",
+      "responsibilities": [
+        "Administer local, intravenous, and general anesthesia",
+        "Monitor patient vital signs during procedures",
+        "Manage anesthesia-related risks and complications",
+        "Provide pain management during dental surgeries",
+        "Evaluate patient medical history before sedation",
+        "Ensure safe recovery after anesthesia"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Advanced training in dental anesthesiology",
+        "Certification in anesthesia and sedation techniques"
+      ],
+      "key_skills": [
+        "Anesthesia administration",
+        "Patient monitoring",
+        "Emergency response",
+        "Pharmacology knowledge"
+      ],
+      "work_settings": [
+        "Dental surgical centers",
+        "Hospitals",
+        "Specialty dental clinics"
+      ]
+    },
+    {
+      "id": "dentist_027",
+      "source_order": 27,
+      "title": "Sedation Dentist",
+      "overview": "A Sedation Dentist specializes in providing dental care to patients with dental anxiety, special needs, or complex procedures by using sedation techniques to ensure a comfortable experience.",
+      "responsibilities": [
+        "Administer oral, inhalation, or IV sedation",
+        "Treat anxious or phobic dental patients",
+        "Perform dental procedures under sedation",
+        "Monitor patient safety during sedation",
+        "Manage sedation-related complications",
+        "Educate patients about sedation options"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Certification in sedation dentistry",
+        "Dental license"
+      ],
+      "key_skills": [
+        "Anxiety management",
+        "Sedation techniques",
+        "Patient safety monitoring",
+        "Emergency response"
+      ],
+      "work_settings": [
+        "Dental clinics",
+        "Sedation dentistry centers",
+        "Hospitals"
+      ]
+    },
+    {
+      "id": "dentist_028",
+      "source_order": 28,
+      "title": "Dental Lecturer",
+      "overview": "A Dental Lecturer is responsible for teaching undergraduate dental students theoretical and clinical aspects of dentistry while supporting research and academic development within a dental college.",
+      "responsibilities": [
+        "Deliver lectures on dental science and clinical subjects",
+        "Teach dental anatomy, pathology, and clinical techniques",
+        "Guide students during practical laboratory sessions",
+        "Assist in clinical training of dental students",
+        "Evaluate student assignments and examinations",
+        "Participate in academic research and publications",
+        "Contribute to curriculum development"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "MDS preferred in a dental specialty",
+        "Academic teaching certification (optional in some institutions)"
+      ],
+      "key_skills": [
+        "Teaching and communication",
+        "Academic research",
+        "Student mentorship",
+        "Curriculum planning"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Universities",
+        "Teaching hospitals"
+      ]
+    },
+    {
+      "id": "dentist_029",
+      "source_order": 29,
+      "title": "Assistant Professor (Dentistry)",
+      "overview": "An Assistant Professor in Dentistry teaches dental students, supervises clinical training, and conducts research while supporting departmental academic activities.",
+      "responsibilities": [
+        "Teach undergraduate and postgraduate dental students",
+        "Conduct clinical demonstrations and laboratory sessions",
+        "Supervise students during patient treatment in teaching clinics",
+        "Conduct research and publish academic papers",
+        "Participate in curriculum development",
+        "Assist senior faculty in academic administration"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in a dental specialty",
+        "Academic teaching experience preferred"
+      ],
+      "key_skills": [
+        "Academic teaching",
+        "Clinical supervision",
+        "Research methodology",
+        "Academic writing"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Universities",
+        "Teaching hospitals"
+      ]
+    },
+    {
+      "id": "dentist_030",
+      "source_order": 30,
+      "title": "Associate Professor (Dentistry)",
+      "overview": "An Associate Professor is a senior academic professional responsible for advanced teaching, supervising research, and leading academic activities within a dental department.",
+      "responsibilities": [
+        "Deliver advanced lectures to dental students",
+        "Supervise postgraduate students and research projects",
+        "Conduct clinical training sessions",
+        "Publish research papers in scientific journals",
+        "Participate in academic conferences and seminars",
+        "Assist in departmental management and policy planning"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in a dental specialty",
+        "Significant teaching and research experience"
+      ],
+      "key_skills": [
+        "Advanced academic teaching",
+        "Research supervision",
+        "Leadership in academic settings",
+        "Clinical expertise"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Universities",
+        "Research institutions"
+      ]
+    },
+    {
+      "id": "dentist_031",
+      "source_order": 31,
+      "title": "Professor of Dentistry",
+      "overview": "A Professor of Dentistry is a senior academic leader responsible for teaching advanced dental subjects, supervising research programs, and guiding academic policies within a dental department.",
+      "responsibilities": [
+        "Deliver specialized lectures to dental students",
+        "Lead academic and research initiatives",
+        "Supervise postgraduate and doctoral research",
+        "Publish research in international journals",
+        "Mentor junior faculty members",
+        "Represent the department in academic conferences"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in a dental specialty",
+        "Extensive teaching and research experience"
+      ],
+      "key_skills": [
+        "Academic leadership",
+        "Research expertise",
+        "Mentorship and faculty development",
+        "Strategic academic planning"
+      ],
+      "work_settings": [
+        "Universities",
+        "Dental colleges",
+        "Academic research institutions"
+      ]
+    },
+    {
+      "id": "dentist_032",
+      "source_order": 32,
+      "title": "Dean of Dental College",
+      "overview": "The Dean of a Dental College is the highest academic authority responsible for managing the academic, administrative, and clinical operations of the dental institution.",
+      "responsibilities": [
+        "Oversee academic programs and curriculum development",
+        "Manage faculty recruitment and performance evaluation",
+        "Ensure compliance with dental education regulations",
+        "Develop institutional policies and strategic plans",
+        "Supervise research activities and funding initiatives",
+        "Represent the institution in academic and professional bodies"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in a dental specialty",
+        "Extensive academic and administrative experience"
+      ],
+      "key_skills": [
+        "Institutional leadership",
+        "Strategic planning",
+        "Academic administration",
+        "Policy development"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Universities"
+      ]
+    },
+    {
+      "id": "dentist_033",
+      "source_order": 33,
+      "title": "Head of Department (Dental Specialty)",
+      "overview": "The Head of Department (HOD) manages a specific dental specialty department such as orthodontics, oral surgery, or prosthodontics in a dental college.",
+      "responsibilities": [
+        "Manage departmental academic programs",
+        "Supervise faculty and teaching activities",
+        "Coordinate clinical training for students",
+        "Oversee research projects within the department",
+        "Manage departmental budgets and resources",
+        "Ensure quality education and clinical services"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in the respective dental specialty",
+        "Senior academic experience"
+      ],
+      "key_skills": [
+        "Leadership and management",
+        "Academic planning",
+        "Research supervision",
+        "Clinical expertise"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Teaching hospitals"
+      ]
+    },
+    {
+      "id": "dentist_034",
+      "source_order": 34,
+      "title": "Clinical Instructor (Dentistry)",
+      "overview": "A Clinical Instructor trains dental students in practical clinical skills, supervising patient treatments and guiding students in real clinical environments.",
+      "responsibilities": [
+        "Train students in clinical dental procedures",
+        "Supervise patient treatment performed by students",
+        "Provide feedback on clinical performance",
+        "Demonstrate proper dental techniques",
+        "Ensure adherence to clinical safety protocols",
+        "Assist in clinical examinations and evaluations"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS preferred",
+        "Clinical experience in dentistry"
+      ],
+      "key_skills": [
+        "Clinical mentoring",
+        "Practical demonstration",
+        "Patient management",
+        "Teaching and supervision"
+      ],
+      "work_settings": [
+        "Dental teaching hospitals",
+        "Dental colleges"
+      ]
+    },
+    {
+      "id": "dentist_035",
+      "source_order": 35,
+      "title": "Dental Training Program Director",
+      "overview": "A Dental Training Program Director manages and oversees dental residency or postgraduate training programs within academic institutions or hospitals.",
+      "responsibilities": [
+        "Design and manage dental training programs",
+        "Supervise resident dentists and postgraduate students",
+        "Evaluate trainee performance and competencies",
+        "Ensure training meets accreditation standards",
+        "Coordinate with faculty and hospital administration",
+        "Develop educational resources and training modules"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in a dental specialty",
+        "Extensive teaching and clinical experience"
+      ],
+      "key_skills": [
+        "Educational leadership",
+        "Training program management",
+        "Curriculum development",
+        "Academic evaluation"
+      ],
+      "work_settings": [
+        "Dental colleges",
+        "Teaching hospitals",
+        "Academic institutions"
+      ]
+    },
+    {
+      "id": "dentist_036",
+      "source_order": 36,
+      "title": "Dental Research Scientist",
+      "overview": "A Dental Research Scientist conducts scientific studies to improve dental treatments, oral health technologies, and preventive care methods. They work in research institutions, universities, or dental product companies.",
+      "responsibilities": [
+        "Design and conduct dental research studies",
+        "Investigate causes and treatments of oral diseases",
+        "Analyze clinical and laboratory research data",
+        "Develop innovative dental treatment methods",
+        "Publish research findings in scientific journals",
+        "Collaborate with dentists, scientists, and healthcare professionals"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "MDS or PhD in dental sciences or related field",
+        "Research training in clinical or laboratory science"
+      ],
+      "key_skills": [
+        "Research methodology",
+        "Data analysis",
+        "Scientific writing",
+        "Laboratory techniques"
+      ],
+      "work_settings": [
+        "Universities",
+        "Research laboratories",
+        "Dental product companies"
+      ]
+    },
+    {
+      "id": "dentist_037",
+      "source_order": 37,
+      "title": "Clinical Research Dentist",
+      "overview": "A Clinical Research Dentist conducts clinical trials to evaluate new dental treatments, drugs, materials, and technologies before they are introduced into clinical practice.",
+      "responsibilities": [
+        "Design and conduct clinical trials for dental treatments",
+        "Recruit and monitor patients participating in studies",
+        "Ensure compliance with clinical research regulations",
+        "Collect and analyze clinical data",
+        "Prepare research reports and publications",
+        "Collaborate with pharmaceutical and dental product companies"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS or clinical research certification",
+        "Training in clinical trial protocols and ethics"
+      ],
+      "key_skills": [
+        "Clinical research management",
+        "Patient monitoring",
+        "Regulatory compliance",
+        "Data interpretation"
+      ],
+      "work_settings": [
+        "Clinical research organizations (CROs)",
+        "Dental hospitals",
+        "Pharmaceutical and dental companies"
+      ]
+    },
+    {
+      "id": "dentist_038",
+      "source_order": 38,
+      "title": "Oral Biology Researcher",
+      "overview": "An Oral Biology Researcher studies the biological and molecular mechanisms of oral tissues, teeth, saliva, and oral microorganisms to better understand oral diseases.",
+      "responsibilities": [
+        "Study oral tissue biology and physiology",
+        "Investigate oral microbiology and infections",
+        "Conduct laboratory experiments related to oral diseases",
+        "Develop new treatments for dental conditions",
+        "Publish research in scientific journals",
+        "Collaborate with biomedical researchers"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "PhD in Oral Biology or related biomedical field"
+      ],
+      "key_skills": [
+        "Molecular biology techniques",
+        "Laboratory research",
+        "Data interpretation",
+        "Scientific publication"
+      ],
+      "work_settings": [
+        "Universities",
+        "Biomedical research laboratories",
+        "Dental research institutes"
+      ]
+    },
+    {
+      "id": "dentist_039",
+      "source_order": 39,
+      "title": "Dental Materials Researcher",
+      "overview": "A Dental Materials Researcher studies and develops materials used in dental treatments such as fillings, crowns, implants, adhesives, and prosthetics.",
+      "responsibilities": [
+        "Develop and test dental materials",
+        "Evaluate durability and biocompatibility of materials",
+        "Conduct laboratory testing and simulations",
+        "Collaborate with dental product manufacturers",
+        "Improve performance of restorative dental materials",
+        "Publish research findings and technical reports"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS or PhD in Dental Materials / Biomaterials"
+      ],
+      "key_skills": [
+        "Material science knowledge",
+        "Laboratory testing techniques",
+        "Product development",
+        "Research and analysis"
+      ],
+      "work_settings": [
+        "Dental material manufacturing companies",
+        "Research laboratories",
+        "Universities"
+      ]
+    },
+    {
+      "id": "dentist_040",
+      "source_order": 40,
+      "title": "Dental Epidemiologist",
+      "overview": "A Dental Epidemiologist studies patterns, causes, and prevention of oral diseases in populations to improve public health policies and dental care programs.",
+      "responsibilities": [
+        "Conduct population-based oral health studies",
+        "Analyze trends in dental diseases",
+        "Identify risk factors for oral health conditions",
+        "Develop preventive dental health programs",
+        "Support public health policy development",
+        "Publish epidemiological research findings"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Public Health Dentistry or MPH (Master of Public Health)"
+      ],
+      "key_skills": [
+        "Epidemiological research",
+        "Statistical analysis",
+        "Public health planning",
+        "Data interpretation"
+      ],
+      "work_settings": [
+        "Public health organizations",
+        "Government health departments",
+        "Research institutions"
+      ]
+    },
+    {
+      "id": "dentist_041",
+      "source_order": 41,
+      "title": "Biomaterials Scientist (Dental Applications)",
+      "overview": "A Biomaterials Scientist develops advanced materials used in dental implants, fillings, crowns, and other restorative dental treatments.",
+      "responsibilities": [
+        "Develop new biomaterials for dental applications",
+        "Test materials for safety and durability",
+        "Conduct laboratory experiments on implant materials",
+        "Collaborate with engineers and dental researchers",
+        "Improve biocompatibility of dental implants",
+        "Support product innovation in dental technology"
+      ],
+      "required_qualifications": [
+        "BDS or biomedical science background",
+        "MDS / PhD in Biomaterials or Material Science"
+      ],
+      "key_skills": [
+        "Biomaterial design",
+        "Laboratory testing",
+        "Engineering collaboration",
+        "Product innovation"
+      ],
+      "work_settings": [
+        "Dental implant companies",
+        "Biomedical research laboratories",
+        "Universities"
+      ]
+    },
+    {
+      "id": "dentist_042",
+      "source_order": 42,
+      "title": "Dental Public Health Researcher",
+      "overview": "A Dental Public Health Researcher studies oral health issues at the population level and develops strategies to improve access to dental care and preventive services.",
+      "responsibilities": [
+        "Conduct research on community oral health issues",
+        "Evaluate dental healthcare programs",
+        "Study access to dental care in different populations",
+        "Develop public health policies for oral health",
+        "Collaborate with government health agencies",
+        "Publish public health research reports"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Public Health Dentistry or MPH"
+      ],
+      "key_skills": [
+        "Public health research",
+        "Data analysis",
+        "Policy development",
+        "Community health planning"
+      ],
+      "work_settings": [
+        "Public health organizations",
+        "Government health departments",
+        "Universities and research institutes"
+      ]
+    },
+    {
+      "id": "dentist_043",
+      "source_order": 43,
+      "title": "Government Dental Surgeon",
+      "overview": "A Government Dental Surgeon provides dental care in government hospitals and healthcare facilities. They diagnose and treat oral diseases while supporting public healthcare programs.",
+      "responsibilities": [
+        "Examine and diagnose dental problems",
+        "Perform dental procedures such as fillings, extractions, and root canal treatments",
+        "Provide preventive dental care and oral health education",
+        "Maintain patient medical records",
+        "Participate in government health programs",
+        "Refer complex cases to specialized dental centers"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "Registration with the State Dental Council or Dental Council of India",
+        "Qualification through government recruitment exams"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Patient care",
+        "Preventive dental care",
+        "Public health awareness"
+      ],
+      "work_settings": [
+        "Government hospitals",
+        "District hospitals",
+        "Public health clinics"
+      ]
+    },
+    {
+      "id": "dentist_044",
+      "source_order": 44,
+      "title": "Public Health Dentist",
+      "overview": "A Public Health Dentist focuses on improving oral health at the population level by implementing preventive programs and promoting oral health awareness in communities.",
+      "responsibilities": [
+        "Plan and implement community dental health programs",
+        "Conduct dental screenings in schools and rural areas",
+        "Educate communities about oral hygiene practices",
+        "Monitor oral disease trends in populations",
+        "Support national public health initiatives",
+        "Collaborate with healthcare professionals and government agencies"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS in Public Health Dentistry (preferred)",
+        "Registration with dental regulatory authorities"
+      ],
+      "key_skills": [
+        "Community health planning",
+        "Preventive dentistry",
+        "Public health education",
+        "Data analysis"
+      ],
+      "work_settings": [
+        "Public health departments",
+        "Government health programs",
+        "Community healthcare centers"
+      ]
+    },
+    {
+      "id": "dentist_045",
+      "source_order": 45,
+      "title": "District Dental Officer",
+      "overview": "A District Dental Officer supervises and manages dental health services within a district, ensuring effective implementation of government oral health programs.",
+      "responsibilities": [
+        "Supervise dental services across district healthcare facilities",
+        "Implement government dental health policies",
+        "Manage dental staff in district hospitals and clinics",
+        "Monitor oral health programs and outreach initiatives",
+        "Prepare reports on district oral health status",
+        "Coordinate training programs for dental healthcare workers"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "MDS preferred",
+        "Government service experience"
+      ],
+      "key_skills": [
+        "Healthcare administration",
+        "Leadership and supervision",
+        "Program management",
+        "Public health planning"
+      ],
+      "work_settings": [
+        "District health offices",
+        "Government hospitals",
+        "Public health departments"
+      ]
+    },
+    {
+      "id": "dentist_046",
+      "source_order": 46,
+      "title": "Community Health Center Dentist",
+      "overview": "A Community Health Center Dentist provides essential dental services in community healthcare facilities, focusing on preventive and basic restorative dental care.",
+      "responsibilities": [
+        "Diagnose and treat common dental conditions",
+        "Provide preventive treatments such as cleanings and fluoride applications",
+        "Conduct dental awareness programs in communities",
+        "Manage dental emergencies in community health centers",
+        "Refer complex cases to district hospitals"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Registration with dental council",
+        "Government healthcare recruitment qualification"
+      ],
+      "key_skills": [
+        "Primary dental care",
+        "Community engagement",
+        "Preventive dentistry",
+        "Patient education"
+      ],
+      "work_settings": [
+        "Community health centers",
+        "Rural healthcare facilities",
+        "Government clinics"
+      ]
+    },
+    {
+      "id": "dentist_047",
+      "source_order": 47,
+      "title": "Primary Health Centre Dentist",
+      "overview": "A Primary Health Centre (PHC) Dentist provides basic dental care services in rural and semi- urban areas as part of primary healthcare delivery.",
+      "responsibilities": [
+        "Perform routine dental examinations",
+        "Treat common dental problems such as cavities and gum disease",
+        "Conduct preventive dental programs",
+        "Educate patients on oral hygiene and nutrition",
+        "Participate in public health campaigns"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Registration with dental regulatory authority"
+      ],
+      "key_skills": [
+        "Basic clinical dentistry",
+        "Preventive care",
+        "Community health awareness",
+        "Patient counseling"
+      ],
+      "work_settings": [
+        "Primary health centers",
+        "Rural health clinics",
+        "Government healthcare facilities"
+      ]
+    },
+    {
+      "id": "dentist_048",
+      "source_order": 48,
+      "title": "Armed Forces Dental Officer",
+      "overview": "An Armed Forces Dental Officer provides dental care to military personnel and their families within the healthcare system of the armed forces.",
+      "responsibilities": [
+        "Diagnose and treat dental problems in military personnel",
+        "Perform dental surgeries and restorative procedures",
+        "Conduct dental health assessments for service members",
+        "Participate in military medical operations",
+        "Maintain dental readiness for armed forces personnel"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Qualification through recruitment under Indian Armed Forces medical services",
+        "Dental council registration"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Emergency dental care",
+        "Military medical readiness",
+        "Discipline and teamwork"
+      ],
+      "work_settings": [
+        "Military hospitals",
+        "Defense medical facilities",
+        "Armed forces bases"
+      ]
+    },
+    {
+      "id": "dentist_049",
+      "source_order": 49,
+      "title": "Railway Dental Officer",
+      "overview": "A Railway Dental Officer provides dental care to employees of the national railway system and their families.",
+      "responsibilities": [
+        "Provide routine and emergency dental treatments",
+        "Conduct dental check-ups for railway staff",
+        "Manage dental clinics within railway hospitals",
+        "Promote oral health awareness among railway employees",
+        "Maintain dental patient records"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Government recruitment through Indian Railways medical services",
+        "Dental council registration"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Preventive dental care",
+        "Patient management",
+        "Healthcare administration"
+      ],
+      "work_settings": [
+        "Railway hospitals",
+        "Railway medical units"
+      ]
+    },
+    {
+      "id": "dentist_050",
+      "source_order": 50,
+      "title": "ESI Dental Officer",
+      "overview": "An ESI Dental Officer provides dental healthcare services to insured workers and their families under the government’s employee health insurance program.",
+      "responsibilities": [
+        "Diagnose and treat dental diseases",
+        "Provide dental procedures such as fillings and extractions",
+        "Maintain patient medical records",
+        "Promote oral health awareness among workers",
+        "Participate in preventive dental care programs"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Recruitment through Employees' State Insurance Corporation",
+        "Dental council registration"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Preventive care",
+        "Patient education",
+        "Healthcare documentation"
+      ],
+      "work_settings": [
+        "ESI hospitals",
+        "ESI dispensaries"
+      ]
+    },
+    {
+      "id": "dentist_051",
+      "source_order": 51,
+      "title": "CGHS Dental Officer",
+      "overview": "A CGHS Dental Officer provides dental care services to central government employees, pensioners, and their dependents under the government healthcare scheme.",
+      "responsibilities": [
+        "Provide dental diagnosis and treatment",
+        "Perform preventive and restorative dental procedures",
+        "Maintain dental records for CGHS beneficiaries",
+        "Conduct oral health education programs",
+        "Refer complex cases to specialized hospitals"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Recruitment through Central Government Health Scheme",
+        "Dental council registration"
+      ],
+      "key_skills": [
+        "Clinical dentistry",
+        "Preventive dental care",
+        "Patient communication",
+        "Healthcare service management"
+      ],
+      "work_settings": [
+        "CGHS wellness centers",
+        "Government hospitals"
+      ]
+    },
+    {
+      "id": "dentist_052",
+      "source_order": 52,
+      "title": "Medical Advisor (Dental Products)",
+      "overview": "A Medical Advisor provides scientific and clinical expertise to dental product companies. They support product development, marketing strategies, and clinical research to ensure dental products are safe and effective.",
+      "responsibilities": [
+        "Provide clinical guidance on dental product development",
+        "Evaluate scientific evidence for dental products",
+        "Support marketing teams with medical and scientific insights",
+        "Conduct training sessions for healthcare professionals",
+        "Participate in clinical trials and research studies",
+        "Ensure compliance with healthcare regulations"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "MDS preferred in a dental specialty",
+        "Experience in clinical dentistry or research"
+      ],
+      "key_skills": [
+        "Scientific communication",
+        "Clinical research knowledge",
+        "Product evaluation",
+        "Regulatory awareness"
+      ],
+      "work_settings": [
+        "Dental product companies",
+        "Pharmaceutical companies",
+        "Medical technology firms"
+      ]
+    },
+    {
+      "id": "dentist_053",
+      "source_order": 53,
+      "title": "Dental Product Specialist",
+      "overview": "A Dental Product Specialist provides technical knowledge and support for dental products, helping dentists understand how to use new materials, tools, and equipment effectively.",
+      "responsibilities": [
+        "Demonstrate dental products to dentists and clinics",
+        "Provide technical support for product usage",
+        "Train dental professionals on new dental technologies",
+        "Assist sales teams with product knowledge",
+        "Gather feedback from dentists to improve products",
+        "Participate in dental conferences and exhibitions"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Knowledge of dental materials and technologies"
+      ],
+      "key_skills": [
+        "Product knowledge",
+        "Technical communication",
+        "Customer relationship management",
+        "Presentation skills"
+      ],
+      "work_settings": [
+        "Dental equipment companies",
+        "Dental supply companies",
+        "Healthcare technology firms"
+      ]
+    },
+    {
+      "id": "dentist_054",
+      "source_order": 54,
+      "title": "Clinical Application Specialist (Dental)",
+      "overview": "A Clinical Application Specialist trains dental professionals on the proper use of advanced dental technologies and equipment.",
+      "responsibilities": [
+        "Train dentists on new dental equipment and software",
+        "Provide clinical support during equipment installation",
+        "Demonstrate product features and benefits",
+        "Assist dentists with troubleshooting technical issues",
+        "Develop educational materials for dental technologies",
+        "Collaborate with product development teams"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Experience with dental technology and clinical procedures"
+      ],
+      "key_skills": [
+        "Technical training",
+        "Clinical knowledge",
+        "Communication and presentation",
+        "Problem-solving"
+      ],
+      "work_settings": [
+        "Dental technology companies",
+        "Medical equipment manufacturers",
+        "Dental software companies"
+      ]
+    },
+    {
+      "id": "dentist_055",
+      "source_order": 55,
+      "title": "Dental Equipment Trainer",
+      "overview": "A Dental Equipment Trainer educates dentists and dental staff on the proper use, maintenance, and safety of dental equipment and instruments.",
+      "responsibilities": [
+        "Train dental professionals on dental equipment usage",
+        "Conduct workshops and training sessions",
+        "Develop instructional materials and manuals",
+        "Demonstrate equipment installation and maintenance",
+        "Ensure compliance with safety standards",
+        "Provide ongoing technical support"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Knowledge of dental equipment and technology"
+      ],
+      "key_skills": [
+        "Technical training",
+        "Equipment operation",
+        "Communication and teaching",
+        "Problem-solving"
+      ],
+      "work_settings": [
+        "Dental equipment companies",
+        "Training centers",
+        "Healthcare technology firms"
+      ]
+    },
+    {
+      "id": "dentist_056",
+      "source_order": 56,
+      "title": "Dental Sales Consultant",
+      "overview": "A Dental Sales Consultant promotes and sells dental products, equipment, and materials to dental clinics, hospitals, and healthcare institutions.",
+      "responsibilities": [
+        "Promote dental products to dentists and clinics",
+        "Build relationships with dental professionals",
+        "Provide product demonstrations and presentations",
+        "Meet sales targets and business goals",
+        "Analyze market trends in the dental industry",
+        "Provide after-sales support and customer service"
+      ],
+      "required_qualifications": [
+        "BDS preferred",
+        "Sales or marketing experience beneficial"
+      ],
+      "key_skills": [
+        "Sales and negotiation",
+        "Communication and persuasion",
+        "Product knowledge",
+        "Customer relationship management"
+      ],
+      "work_settings": [
+        "Dental supply companies",
+        "Healthcare marketing firms",
+        "Dental equipment manufacturers"
+      ]
+    },
+    {
+      "id": "dentist_057",
+      "source_order": 57,
+      "title": "Dental Technology Consultant",
+      "overview": "A Dental Technology Consultant advises dental clinics and organizations on adopting modern technologies such as digital dentistry, CAD/CAM systems, and 3D dental imaging.",
+      "responsibilities": [
+        "Advise clinics on dental technology implementation",
+        "Evaluate digital dentistry systems and software",
+        "Assist clinics in integrating new technologies",
+        "Provide training on digital dental tools",
+        "Conduct technology assessments for dental practices",
+        "Support digital transformation in dental clinics"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Knowledge of digital dentistry and dental technologies"
+      ],
+      "key_skills": [
+        "Technology consulting",
+        "Digital dentistry expertise",
+        "Problem-solving",
+        "Strategic planning"
+      ],
+      "work_settings": [
+        "Dental technology companies",
+        "Healthcare consulting firms",
+        "Digital dentistry providers"
+      ]
+    },
+    {
+      "id": "dentist_058",
+      "source_order": 58,
+      "title": "Dental Product Development Manager",
+      "overview": "A Dental Product Development Manager leads the development of new dental products such as implants, restorative materials, dental equipment, and oral care solutions.",
+      "responsibilities": [
+        "Manage dental product development projects",
+        "Collaborate with researchers and engineers",
+        "Conduct product testing and validation",
+        "Analyze market needs and dental trends",
+        "Ensure regulatory compliance for new products",
+        "Coordinate product launch strategies"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Experience in product development or research"
+      ],
+      "key_skills": [
+        "Product innovation",
+        "Project management",
+        "Market research",
+        "Cross-functional collaboration"
+      ],
+      "work_settings": [
+        "Dental manufacturing companies",
+        "Medical device companies",
+        "Oral care product companies"
+      ]
+    },
+    {
+      "id": "dentist_059",
+      "source_order": 59,
+      "title": "Dental Clinic Owner",
+      "overview": "A Dental Clinic Owner operates and manages a private dental clinic, overseeing both clinical services and business operations. They ensure high-quality dental care while maintaining financial sustainability and regulatory compliance.",
+      "responsibilities": [
+        "Provide dental treatments and supervise clinical services",
+        "Manage daily operations of the dental clinic",
+        "Hire and supervise dentists, hygienists, and support staff",
+        "Ensure compliance with healthcare regulations",
+        "Manage clinic finances, budgeting, and revenue",
+        "Maintain patient satisfaction and service quality",
+        "Implement marketing strategies to grow the clinic"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "Dental license from the Dental Council of India or State Dental Council",
+        "Business or healthcare management knowledge (preferred)"
+      ],
+      "key_skills": [
+        "Leadership and management",
+        "Financial management",
+        "Patient relationship management",
+        "Strategic planning"
+      ],
+      "work_settings": [
+        "Private dental clinics",
+        "Multi-specialty dental centers"
+      ]
+    },
+    {
+      "id": "dentist_060",
+      "source_order": 60,
+      "title": "Dental Practice Manager",
+      "overview": "A Dental Practice Manager oversees the administrative and operational activities of a dental clinic or dental practice to ensure efficient patient care and smooth business operations.",
+      "responsibilities": [
+        "Manage daily clinic operations and staff schedules",
+        "Coordinate patient appointments and billing systems",
+        "Maintain clinic records and documentation",
+        "Monitor clinic performance and financial outcomes",
+        "Ensure compliance with healthcare regulations",
+        "Manage patient satisfaction and service quality"
+      ],
+      "required_qualifications": [
+        "BDS or healthcare administration degree",
+        "Experience in clinic management"
+      ],
+      "key_skills": [
+        "Healthcare administration",
+        "Organizational management",
+        "Communication and leadership",
+        "Financial management"
+      ],
+      "work_settings": [
+        "Dental clinics",
+        "Dental chains",
+        "Private healthcare centers"
+      ]
+    },
+    {
+      "id": "dentist_061",
+      "source_order": 61,
+      "title": "Dental Hospital Administrator",
+      "overview": "A Dental Hospital Administrator manages the operational and administrative functions of a dental hospital, ensuring efficient healthcare delivery and regulatory compliance.",
+      "responsibilities": [
+        "Manage hospital operations and dental services",
+        "Supervise dental and administrative staff",
+        "Coordinate patient services and hospital workflows",
+        "Manage budgets and financial planning",
+        "Ensure compliance with healthcare regulations",
+        "Implement quality improvement initiatives"
+      ],
+      "required_qualifications": [
+        "BDS or healthcare administration degree (MHA/MBA preferred)",
+        "Experience in healthcare management"
+      ],
+      "key_skills": [
+        "Hospital management",
+        "Leadership and team management",
+        "Strategic planning",
+        "Healthcare policy understanding"
+      ],
+      "work_settings": [
+        "Dental hospitals",
+        "Multi-specialty hospitals",
+        "Healthcare institutions"
+      ]
+    },
+    {
+      "id": "dentist_062",
+      "source_order": 62,
+      "title": "Director of Dental Services",
+      "overview": "The Director of Dental Services oversees dental programs and services across healthcare organizations, hospitals, or large dental networks.",
+      "responsibilities": [
+        "Develop policies for dental healthcare services",
+        "Supervise dental staff and specialists",
+        "Manage dental program budgets and resources",
+        "Ensure quality and safety standards in dental care",
+        "Coordinate dental services across multiple facilities",
+        "Represent dental departments in healthcare leadership meetings"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Extensive experience in clinical dentistry and healthcare management"
+      ],
+      "key_skills": [
+        "Strategic healthcare leadership",
+        "Program management",
+        "Policy development",
+        "Organizational management"
+      ],
+      "work_settings": [
+        "Hospitals",
+        "Government health departments",
+        "Large dental networks"
+      ]
+    },
+    {
+      "id": "dentist_063",
+      "source_order": 63,
+      "title": "Chief Dental Officer",
+      "overview": "A Chief Dental Officer (CDO) is the senior-most dental executive responsible for overseeing dental healthcare services within large healthcare organizations or government health systems.",
+      "responsibilities": [
+        "Develop strategic plans for dental services",
+        "Lead dental teams across healthcare facilities",
+        "Ensure high standards of dental care and patient safety",
+        "Manage budgets and healthcare resources",
+        "Advise healthcare leadership on dental policies",
+        "Represent the organization in professional healthcare forums"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Extensive leadership and clinical experience"
+      ],
+      "key_skills": [
+        "Executive leadership",
+        "Healthcare policy development",
+        "Strategic planning",
+        "Organizational governance"
+      ],
+      "work_settings": [
+        "National healthcare organizations",
+        "Government health systems",
+        "Large hospital networks"
+      ]
+    },
+    {
+      "id": "dentist_064",
+      "source_order": 64,
+      "title": "Healthcare Operations Manager (Dental Services)",
+      "overview": "A Healthcare Operations Manager oversees the operational performance of dental clinics or dental departments within hospitals, ensuring efficient patient services and operational effectiveness.",
+      "responsibilities": [
+        "Manage operational workflows in dental clinics",
+        "Monitor performance metrics and service quality",
+        "Optimize staffing and resource utilization",
+        "Implement healthcare management systems",
+        "Improve patient service processes",
+        "Coordinate with clinical and administrative teams"
+      ],
+      "required_qualifications": [
+        "BDS or healthcare management degree (MBA/MHA preferred)",
+        "Experience in healthcare operations management"
+      ],
+      "key_skills": [
+        "Operational management",
+        "Data-driven decision-making",
+        "Process optimization",
+        "Leadership and coordination"
+      ],
+      "work_settings": [
+        "Hospital dental departments",
+        "Dental clinic networks",
+        "Healthcare organizations"
+      ]
+    },
+    {
+      "id": "dentist_065",
+      "source_order": 65,
+      "title": "Cruise Ship Dentist",
+      "overview": "A Cruise Ship Dentist provides dental care to passengers and crew members aboard cruise ships. They manage dental emergencies, routine treatments, and oral health consultations during voyages.",
+      "responsibilities": [
+        "Diagnose and treat dental conditions for passengers and crew",
+        "Manage dental emergencies such as severe tooth pain or trauma",
+        "Perform procedures like fillings, extractions, and temporary restorations",
+        "Maintain dental equipment and supplies onboard",
+        "Educate patients about oral health during travel",
+        "Coordinate with ship medical staff for patient care"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "Dental license in home country",
+        "Clinical experience in general dentistry",
+        "Basic life support or emergency medical training preferred"
+      ],
+      "key_skills": [
+        "Emergency dental care",
+        "Independent clinical decision-making",
+        "Patient communication",
+        "Adaptability in remote environments"
+      ],
+      "work_settings": [
+        "International cruise ships",
+        "Maritime medical facilities"
+      ]
+    },
+    {
+      "id": "dentist_066",
+      "source_order": 66,
+      "title": "Sports Team Dentist",
+      "overview": "A Sports Team Dentist provides dental care for professional athletes, focusing on oral injuries, preventive dental protection, and dental health related to sports performance.",
+      "responsibilities": [
+        "Treat sports-related dental injuries",
+        "Design and provide custom mouthguards",
+        "Provide emergency dental treatment during sporting events",
+        "Conduct oral health assessments for athletes",
+        "Educate athletes about dental injury prevention",
+        "Collaborate with sports medicine teams"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Training or experience in sports dentistry preferred"
+      ],
+      "key_skills": [
+        "Sports injury management",
+        "Emergency dental treatment",
+        "Preventive dentistry",
+        "Collaboration with sports medicine professionals"
+      ],
+      "work_settings": [
+        "Professional sports teams",
+        "Sports medicine clinics",
+        "Athletic training facilities"
+      ]
+    },
+    {
+      "id": "dentist_067",
+      "source_order": 67,
+      "title": "Aviation Medical Examiner (Dental Background)",
+      "overview": "An Aviation Medical Examiner with a dental background evaluates the oral health and medical fitness of pilots and aviation personnel as part of aviation health assessments.",
+      "responsibilities": [
+        "Conduct medical and dental examinations for aviation personnel",
+        "Assess oral health conditions that may affect flight safety",
+        "Evaluate dental pain risks during high-altitude flights",
+        "Provide medical fitness certification reports",
+        "Advise pilots on oral health maintenance"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Certification in aviation medicine (required for official examiner roles)",
+        "Medical examiner authorization from aviation authorities"
+      ],
+      "key_skills": [
+        "Medical evaluation",
+        "Aviation health knowledge",
+        "Clinical diagnosis",
+        "Regulatory compliance"
+      ],
+      "work_settings": [
+        "Aviation medical centers",
+        "Aviation regulatory organizations"
+      ]
+    },
+    {
+      "id": "dentist_068",
+      "source_order": 68,
+      "title": "Humanitarian Dentist",
+      "overview": "A Humanitarian Dentist provides dental care to underserved populations in low-resource settings, often working with global health organizations and non-profit missions.",
+      "responsibilities": [
+        "Provide dental treatments in underserved communities",
+        "Conduct oral health screening programs",
+        "Educate communities about oral hygiene",
+        "Participate in international health missions",
+        "Train local healthcare workers in basic dental care",
+        "Support public health initiatives in developing regions"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Dental license",
+        "Experience in community or public health dentistry preferred"
+      ],
+      "key_skills": [
+        "Community healthcare delivery",
+        "Cultural sensitivity",
+        "Adaptability in resource-limited environments",
+        "Public health education"
+      ],
+      "work_settings": [
+        "International NGOs",
+        "Rural health missions",
+        "Global health programs"
+      ]
+    },
+    {
+      "id": "dentist_069",
+      "source_order": 69,
+      "title": "Disaster Relief Dentist",
+      "overview": "A Disaster Relief Dentist provides emergency dental care during natural disasters, humanitarian crises, and emergency medical missions.",
+      "responsibilities": [
+        "Provide urgent dental care to disaster victims",
+        "Manage dental infections and trauma cases",
+        "Assist emergency medical teams in relief operations",
+        "Conduct dental triage in emergency settings",
+        "Support healthcare infrastructure during crises"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Emergency healthcare or disaster response training preferred"
+      ],
+      "key_skills": [
+        "Emergency dental care",
+        "Crisis management",
+        "Rapid decision-making",
+        "Team collaboration in emergency environments"
+      ],
+      "work_settings": [
+        "Disaster relief missions",
+        "Emergency medical camps",
+        "Humanitarian organizations"
+      ]
+    },
+    {
+      "id": "dentist_070",
+      "source_order": 70,
+      "title": "Medical Tourism Dentist",
+      "overview": "A Medical Tourism Dentist provides dental treatments for international patients traveling to other countries for affordable or specialized dental procedures.",
+      "responsibilities": [
+        "Provide advanced dental procedures for international patients",
+        "Coordinate treatment plans for visiting patients",
+        "Communicate treatment options in international settings",
+        "Work with medical tourism facilitators and agencies",
+        "Ensure high-quality dental services and patient satisfaction",
+        "Provide follow-up care and remote consultation"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Experience in advanced dental procedures",
+        "Strong communication skills for international patients"
+      ],
+      "key_skills": [
+        "Advanced clinical dentistry",
+        "International patient communication",
+        "Treatment planning",
+        "Healthcare service quality management"
+      ],
+      "work_settings": [
+        "International dental clinics",
+        "Medical tourism hospitals",
+        "Private dental centers catering to international patients"
+      ]
+    },
+    {
+      "id": "dentist_071",
+      "source_order": 71,
+      "title": "Locum Dentist",
+      "overview": "A Locum Dentist works temporarily in dental clinics or hospitals to replace dentists who are absent due to leave, illness, or staffing shortages.",
+      "responsibilities": [
+        "Provide temporary dental care in clinics or hospitals",
+        "Diagnose and treat common dental problems",
+        "Maintain patient records and treatment plans",
+        "Adapt to different clinic environments",
+        "Provide continuity of care for patients"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Dental license and registration with the Dental Council of India or relevant international authority"
+      ],
+      "key_skills": [
+        "Clinical adaptability",
+        "Time management",
+        "Communication and patient care",
+        "Ability to work in different healthcare environments"
+      ],
+      "work_settings": [
+        "Private dental clinics",
+        "Hospitals",
+        "Temporary healthcare staffing agencies"
+      ]
+    },
+    {
+      "id": "dentist_072",
+      "source_order": 72,
+      "title": "Dental Medico-Legal Consultant",
+      "overview": "A Dental Medico-Legal Consultant provides expert advice on dental cases that involve legal disputes, malpractice claims, or insurance matters. They analyze clinical records and help lawyers and healthcare organizations understand dental procedures and standards of care.",
+      "responsibilities": [
+        "Review dental records and treatment documentation",
+        "Evaluate potential dental malpractice claims",
+        "Provide expert opinions on dental treatment standards",
+        "Assist attorneys in understanding dental procedures",
+        "Prepare medico-legal reports for court cases",
+        "Participate in legal consultations and investigations"
+      ],
+      "required_qualifications": [
+        "BDS (Bachelor of Dental Surgery)",
+        "Clinical experience in dentistry",
+        "Knowledge of healthcare law and medical ethics"
+      ],
+      "key_skills": [
+        "Legal analysis",
+        "Clinical evaluation",
+        "Report writing",
+        "Communication with legal professionals"
+      ],
+      "work_settings": [
+        "Legal consulting firms",
+        "Law offices",
+        "Healthcare consulting agencies"
+      ]
+    },
+    {
+      "id": "dentist_073",
+      "source_order": 73,
+      "title": "Forensic Odontologist",
+      "overview": "A Forensic Odontologist applies dental science to legal investigations, particularly in identifying individuals through dental records and analyzing bite marks in criminal cases.",
+      "responsibilities": [
+        "Identify human remains using dental records",
+        "Analyze bite mark evidence in criminal investigations",
+        "Assist law enforcement in forensic identification",
+        "Participate in disaster victim identification teams",
+        "Prepare forensic dental reports for legal authorities",
+        "Testify in court regarding forensic dental findings"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Specialized training in forensic odontology",
+        "Experience in forensic investigation methods"
+      ],
+      "key_skills": [
+        "Forensic analysis",
+        "Dental record interpretation",
+        "Evidence documentation",
+        "Collaboration with law enforcement agencies"
+      ],
+      "work_settings": [
+        "Forensic laboratories",
+        "Law enforcement agencies",
+        "Disaster victim identification teams"
+      ]
+    },
+    {
+      "id": "dentist_074",
+      "source_order": 74,
+      "title": "Dental Insurance Consultant",
+      "overview": "A Dental Insurance Consultant advises insurance companies and dental providers on dental coverage policies, claims evaluation, and treatment cost analysis.",
+      "responsibilities": [
+        "Evaluate dental treatment plans for insurance coverage",
+        "Advise insurance companies on dental procedures and costs",
+        "Develop dental insurance policies and coverage guidelines",
+        "Provide consultation to dental clinics regarding insurance claims",
+        "Review complex insurance cases involving dental treatments"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Knowledge of healthcare insurance systems",
+        "Experience in dental practice or healthcare administration"
+      ],
+      "key_skills": [
+        "Insurance policy analysis",
+        "Cost evaluation",
+        "Healthcare consulting",
+        "Communication and negotiation"
+      ],
+      "work_settings": [
+        "Insurance companies",
+        "Healthcare consulting firms",
+        "Dental insurance providers"
+      ]
+    },
+    {
+      "id": "dentist_075",
+      "source_order": 75,
+      "title": "Expert Witness (Dental Cases)",
+      "overview": "An Expert Witness in dental cases provides professional testimony in legal proceedings involving dental malpractice, injuries, or disputes related to dental treatments.",
+      "responsibilities": [
+        "Review dental records and case documentation",
+        "Provide expert opinions on dental treatment standards",
+        "Prepare detailed expert witness reports",
+        "Testify in court during legal proceedings",
+        "Assist attorneys in understanding dental procedures and outcomes"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Extensive clinical experience",
+        "Knowledge of medico-legal procedures"
+      ],
+      "key_skills": [
+        "Professional testimony",
+        "Analytical reasoning",
+        "Report preparation",
+        "Legal communication"
+      ],
+      "work_settings": [
+        "Courts of law",
+        "Legal consulting firms",
+        "Independent medico-legal practice"
+      ]
+    },
+    {
+      "id": "dentist_076",
+      "source_order": 76,
+      "title": "Dental Claims Reviewer",
+      "overview": "A Dental Claims Reviewer evaluates dental insurance claims to determine whether the procedures performed are medically necessary and covered under the insurance policy.",
+      "responsibilities": [
+        "Review dental insurance claims and documentation",
+        "Evaluate treatment plans and procedures",
+        "Verify medical necessity and policy compliance",
+        "Approve or reject claims based on policy guidelines",
+        "Communicate with dentists and insurance providers regarding claims"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Knowledge of dental procedures and insurance regulations"
+      ],
+      "key_skills": [
+        "Claims analysis",
+        "Attention to detail",
+        "Healthcare documentation review",
+        "Policy compliance evaluation"
+      ],
+      "work_settings": [
+        "Health insurance companies",
+        "Third-party healthcare administrators",
+        "Insurance claim processing organizations"
+      ]
+    },
+    {
+      "id": "dentist_077",
+      "source_order": 77,
+      "title": "Digital Dentistry Specialist",
+      "overview": "A Digital Dentistry Specialist focuses on integrating advanced digital technologies into dental practice. They use digital imaging, intraoral scanners, and computer-assisted systems to improve diagnosis, treatment planning, and dental restorations.",
+      "responsibilities": [
+        "Use intraoral scanners and digital imaging systems for diagnosis",
+        "Implement digital workflows for dental treatments",
+        "Plan digital smile design and restorative procedures",
+        "Coordinate with dental laboratories using digital files",
+        "Train dental staff on digital dentistry systems",
+        "Maintain digital dental equipment and software"
+      ],
+      "required_qualifications": [
+        "BDS or MDS",
+        "Training in digital dentistry technologies",
+        "Experience with CAD/CAM and digital imaging systems"
+      ],
+      "key_skills": [
+        "Digital treatment planning",
+        "Dental imaging interpretation",
+        "CAD/CAM technology knowledge",
+        "Dental workflow optimization"
+      ],
+      "work_settings": [
+        "Advanced dental clinics",
+        "Digital dental laboratories",
+        "Dental technology companies"
+      ]
+    },
+    {
+      "id": "dentist_078",
+      "source_order": 78,
+      "title": "CAD/CAM Dental Designer",
+      "overview": "A CAD/CAM Dental Designer uses computer-aided design and computer-aided manufacturing technologies to design dental restorations such as crowns, bridges, implants, and dentures.",
+      "responsibilities": [
+        "Design dental prosthetics using CAD software",
+        "Convert digital scans into dental restoration models",
+        "Collaborate with dentists to finalize prosthetic designs",
+        "Ensure precise measurements for dental restorations",
+        "Operate CAD/CAM milling machines and digital systems"
+      ],
+      "required_qualifications": [
+        "BDS, Dental Technology degree, or specialized CAD/CAM training",
+        "Knowledge of dental anatomy and prosthodontics"
+      ],
+      "key_skills": [
+        "Digital prosthetic design",
+        "3D modeling",
+        "Dental CAD software expertise",
+        "Precision and attention to detail"
+      ],
+      "work_settings": [
+        "Digital dental laboratories",
+        "Dental manufacturing companies",
+        "High-tech dental clinics"
+      ]
+    },
+    {
+      "id": "dentist_079",
+      "source_order": 79,
+      "title": "3D Dental Printing Specialist",
+      "overview": "A 3D Dental Printing Specialist uses additive manufacturing technologies to produce dental models, surgical guides, orthodontic appliances, and dental prosthetics using 3D printers.",
+      "responsibilities": [
+        "Prepare digital models for 3D printing",
+        "Operate and maintain dental 3D printers",
+        "Produce dental aligners, surgical guides, and models",
+        "Ensure quality control of printed dental products",
+        "Collaborate with dentists and orthodontists for design accuracy"
+      ],
+      "required_qualifications": [
+        "BDS, Dental Technology degree, or biomedical engineering background",
+        "Training in 3D printing technologies"
+      ],
+      "key_skills": [
+        "Additive manufacturing",
+        "Dental digital modeling",
+        "Equipment operation and maintenance",
+        "Quality assurance"
+      ],
+      "work_settings": [
+        "Digital dental labs",
+        "Dental manufacturing companies",
+        "Orthodontic laboratories"
+      ]
+    },
+    {
+      "id": "dentist_080",
+      "source_order": 80,
+      "title": "Dental AI Researcher",
+      "overview": "A Dental AI Researcher develops artificial intelligence solutions for dentistry, including automated diagnostics, dental imaging analysis, and predictive dental healthcare systems.",
+      "responsibilities": [
+        "Develop AI models for dental imaging and diagnostics",
+        "Analyze large dental datasets for research",
+        "Build machine learning tools for treatment prediction",
+        "Collaborate with software engineers and dental professionals",
+        "Publish research on AI applications in dentistry"
+      ],
+      "required_qualifications": [
+        "BDS or MDS with research training",
+        "Knowledge of AI, machine learning, or data science",
+        "Experience in dental imaging research preferred"
+      ],
+      "key_skills": [
+        "Artificial intelligence and machine learning",
+        "Dental data analysis",
+        "Research methodology",
+        "Programming and data science"
+      ],
+      "work_settings": [
+        "Dental research institutes",
+        "Health technology companies",
+        "AI healthcare startups"
+      ]
+    },
+    {
+      "id": "dentist_081",
+      "source_order": 81,
+      "title": "Teledentistry Consultant",
+      "overview": "A Teledentistry Consultant provides remote dental consultations using telemedicine platforms. They evaluate patients through digital communication tools and guide treatment decisions remotely.",
+      "responsibilities": [
+        "Conduct remote dental consultations",
+        "Review digital dental images and patient records",
+        "Provide treatment advice and referrals",
+        "Support remote oral health monitoring programs",
+        "Assist clinics in implementing teledentistry systems"
+      ],
+      "required_qualifications": [
+        "BDS",
+        "Experience in clinical dentistry",
+        "Familiarity with telemedicine platforms"
+      ],
+      "key_skills": [
+        "Remote patient consultation",
+        "Digital communication",
+        "Dental diagnostics through imaging",
+        "Telehealth technology usage"
+      ],
+      "work_settings": [
+        "Telehealth platforms",
+        "Online dental consultation services",
+        "Digital healthcare startups"
+      ]
+    }
+  ]
+}

@@ -45,3 +45,24 @@ flowchart LR
 - Retraining data is exported into versioned dataset batches.
 - Async jobs publish a correlation ID for webhook reconciliation.
 
+## Retention and consent metadata
+
+Every candidate-facing AI workflow should store consent and retention metadata with the generated artifacts:
+
+- `ai_screening_consent`
+- `transcript_processing_consent`
+- `automated_scoring_notice`
+- `data_retention_notice`
+- `retention_days`
+- `delete_after`
+- `protected_signal_reviewed`
+- `explainability_available`
+
+Default retention windows:
+
+- raw resume: 180 days
+- transcript: 90 days
+- scorecard: 365 days
+- audit log: 730 days
+- training snapshot: 365 days
+

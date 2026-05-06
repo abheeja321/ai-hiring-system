@@ -58,3 +58,35 @@ def test_generate_score_report():
     assert "92.5/100" in report
     assert "Answer Relevance" in report
     assert "The candidate's story remained highly consistent" in report # Consistency 100 feedback
+
+
+def test_hr_scoring_engine_clamps_scores_and_normalizes_weights():
+    config = WeightConfig(
+        relevance_weight=1.0,
+        communication_weight=1.0,
+        confidence_weight=1.0,
+        consistency_weight=1.0,
+        logical_thinking_weight=1.0,
+        problem_solving_clarity_weight=1.0,
+    )
+    engine = HRScoringEngine(config=config)
+
+    result = engine.calculate_final_score(
+        [
+            TurnEvaluation(
+                turn_id=1,
+                relevance_score=130.0,
+                communication_score=-20.0,
+                confidence_score=80.0,
+                contradiction_penalty=150.0,
+                logical_thinking_score=110.0,
+                problem_solving_clarity_score=70.0,
+            )
+        ]
+    )
+
+    assert 0.0 <= result["final_score"] <= 100.0
+    assert result["averages"]["relevance"] == 100.0
+    assert result["averages"]["communication"] == 0.0
+    assert result["averages"]["consistency"] == 0.0
+    assert round(sum(result["applied_weights"].values()), 2) == 1.0

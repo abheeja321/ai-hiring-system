@@ -1,5 +1,4 @@
 import re
-import numpy as np
 from typing import Dict, Any, List
 
 # Optional deep learning imports (wrapped in try-except for safe testing/loading)
@@ -21,6 +20,20 @@ class BehavioralEvaluator:
         # Lazy load pipelines to save memory until called
         self._sentiment_pipe = None
         self._nli_pipe = None
+
+    @staticmethod
+    def _mean(values) -> float:
+        values = [float(value) for value in values]
+        return sum(values) / len(values) if values else 0.0
+
+    @staticmethod
+    def _std(values) -> float:
+        values = [float(value) for value in values]
+        if not values:
+            return 0.0
+        mean = BehavioralEvaluator._mean(values)
+        variance = sum((value - mean) ** 2 for value in values) / len(values)
+        return variance ** 0.5
 
     def _get_sentiment_pipeline(self):
         if pipeline is None:
@@ -49,21 +62,21 @@ class BehavioralEvaluator:
             y, sr = librosa.load(audio_file_path, sr=None)
             
             # Energy/Loudness (RMS)
-            rms = librosa.feature.rms(y=y)[0]
-            mean_energy = float(np.mean(rms))
+            rms = list(librosa.feature.rms(y=y)[0])
+            mean_energy = self._mean(rms)
             
             # Pitch (F0) tracking - PyIN algorithm
             f0, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
-            valid_f0 = f0[voiced_flag]
+            valid_f0 = [value for value, is_voiced in zip(f0, voiced_flag) if is_voiced]
             
             if len(valid_f0) > 0:
-                pitch_variability = float(np.std(valid_f0))
+                pitch_variability = self._std(valid_f0)
             else:
                 pitch_variability = 0.0
                 
             # Pause detection based on energy threshold
             threshold = mean_energy * 0.1
-            silence_frames = np.sum(rms < threshold)
+            silence_frames = sum(1 for value in rms if value < threshold)
             pause_ratio = float(silence_frames / len(rms)) if len(rms) > 0 else 0.0
             
             return {

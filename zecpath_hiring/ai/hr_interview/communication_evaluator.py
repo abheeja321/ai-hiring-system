@@ -1,5 +1,25 @@
 import re
+import sys
+from types import SimpleNamespace
 from typing import Dict, Any
+
+try:
+    import speech_recognition as sr
+except ImportError:
+    class _SpeechRecognitionError(Exception):
+        pass
+
+    class _MissingSpeechRecognition:
+        def __init__(self, *args, **kwargs):
+            raise ImportError("speech_recognition is not installed")
+
+    sr = SimpleNamespace(
+        Recognizer=_MissingSpeechRecognition,
+        AudioFile=_MissingSpeechRecognition,
+        UnknownValueError=_SpeechRecognitionError,
+        RequestError=_SpeechRecognitionError,
+    )
+    sys.modules["speech_recognition"] = sr
 
 class CommunicationEvaluator:
     """
@@ -173,8 +193,6 @@ Format your response strictly as JSON:
         Evaluates communication directly from an audio file.
         Transcribes the audio, calculates Speech Rate (WPM), and returns the full evaluation.
         """
-        import speech_recognition as sr
-        
         recognizer = sr.Recognizer()
         with sr.AudioFile(audio_file_path) as source:
             audio_data = recognizer.record(source)

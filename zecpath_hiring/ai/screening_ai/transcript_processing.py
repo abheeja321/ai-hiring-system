@@ -35,14 +35,20 @@ def remove_fillers(text: str) -> str:
     normalized = text
     for filler in sorted(FILLER_WORDS, key=len, reverse=True):
         normalized = re.sub(rf"\b{re.escape(filler)}\b", "", normalized, flags=re.IGNORECASE)
+    normalized = re.sub(r"\b(\w+)(\s+\1\b)+", r"\1", normalized, flags=re.IGNORECASE)
     normalized = re.sub(r"\s{2,}", " ", normalized)
     return normalized.strip(" ,.")
 
 
 def normalize_transcript_text(text: str) -> dict:
-    cleaned = text.replace("\n", " ").replace("--", " ").replace("...", " ")
+    cleaned = text.replace("\n", " ").replace("\t", " ")
+    cleaned = re.sub(r"[-]{2,}|[.]{3,}", " ", cleaned)
+    cleaned = re.sub(r"\s+([,.;!?])", r"\1", cleaned)
+    cleaned = re.sub(r"([,.;!?]){2,}", r"\1", cleaned)
     cleaned = remove_fillers(cleaned)
+    cleaned = re.sub(r"\s+([,.;!?])", r"\1", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+    cleaned = cleaned.strip(" ,;:")
     cleaned = cleaned.lower()
     if cleaned:
         cleaned = cleaned[0].upper() + cleaned[1:]

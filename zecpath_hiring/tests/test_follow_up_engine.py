@@ -22,6 +22,18 @@ def test_follow_up_heuristics():
     assert engine.analyze_response(medium_resp) == FollowUpType.DEEPENING
 
 
+def test_follow_up_does_not_over_probe_complete_structured_answer():
+    engine = FollowUpEngine()
+
+    complete_resp = (
+        "First I clarified the customer impact with stakeholders because the deadline was tight. "
+        "Then I worked with the team to choose the smallest safe release, measured the outcome, "
+        "and finally launched it to users with no open blocker."
+    )
+
+    assert engine.analyze_response(complete_resp) == FollowUpType.SUFFICIENT
+
+
 def test_flow_controller_follow_up_integration():
     state = InterviewState(candidate_id=1, job_id=1)
     controller = FlowController(state, ExperienceLevel.EXPERIENCED, RoleType.TECHNICAL)
