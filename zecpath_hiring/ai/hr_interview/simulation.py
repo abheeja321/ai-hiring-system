@@ -16,13 +16,13 @@ class SimulatedCandidateProfile(BaseModel):
     experience_level: ExperienceLevel
     role_type: RoleType
     response_style: str
-    manual_evaluation: Dict[str, float]
+    manager_evaluation_feedback: Dict[str, Any]
     answers: List[str] = Field(default_factory=list)
 
 
 class HRInterviewSimulationRunner:
     """
-    Runs deterministic end-to-end HR interview simulations for Day 40 validation.
+    Runs deterministic end-to-end HR interview simulations for Day 45 Finalization.
     """
 
     INCONSISTENCY_THRESHOLD = 12.0
@@ -50,7 +50,7 @@ class HRInterviewSimulationRunner:
                 experience_level=ExperienceLevel.EXPERIENCED,
                 role_type=RoleType.TECHNICAL,
                 response_style="direct, structured, evidence-backed",
-                manual_evaluation={"overall_score": 86.0, "communication": 88.0, "confidence": 90.0},
+                manager_evaluation_feedback={"overall_score": 86.0, "communication": 88.0, "confidence": 90.0, "manager_notes": "Strong candidate, communicates well."},
                 answers=[
                     "First I clarify constraints and assumptions because urgency alone can mislead the team. "
                     "Second I compare customer impact, delivery risk, and available evidence. Then I communicate "
@@ -66,7 +66,7 @@ class HRInterviewSimulationRunner:
                 experience_level=ExperienceLevel.EXPERIENCED,
                 role_type=RoleType.NON_TECHNICAL,
                 response_style="uncertain, filler-heavy, partially structured",
-                manual_evaluation={"overall_score": 62.0, "communication": 58.0, "confidence": 52.0},
+                manager_evaluation_feedback={"overall_score": 62.0, "communication": 58.0, "confidence": 52.0, "manager_notes": "A bit too hesitant, needs more confidence."},
                 answers=[
                     "I think maybe I would first check what is urgent. I guess I would ask someone and then maybe decide.",
                     "I am not sure. I might tell the client we can try, but I would probably check with the team later.",
@@ -79,7 +79,7 @@ class HRInterviewSimulationRunner:
                 experience_level=ExperienceLevel.FRESHER,
                 role_type=RoleType.TECHNICAL,
                 response_style="eager, brief, limited workplace context",
-                manual_evaluation={"overall_score": 68.0, "communication": 70.0, "confidence": 66.0},
+                manager_evaluation_feedback={"overall_score": 68.0, "communication": 70.0, "confidence": 66.0, "manager_notes": "Lacks practical experience but willing to learn."},
                 answers=[
                     "I would make a list, ask my mentor, compare impact, and choose the task that helps the project most.",
                     "I would clarify facts with my mentor or manager, communicate the risk, and learn the right process.",
@@ -92,7 +92,7 @@ class HRInterviewSimulationRunner:
                 experience_level=ExperienceLevel.EXPERIENCED,
                 role_type=RoleType.TECHNICAL,
                 response_style="high competence, possible role-alignment risk",
-                manual_evaluation={"overall_score": 78.0, "communication": 84.0, "confidence": 88.0},
+                manager_evaluation_feedback={"overall_score": 78.0, "communication": 84.0, "confidence": 88.0, "manager_notes": "Technically brilliant, but might get bored in this specific role."},
                 answers=[
                     "I have led larger programs, so I would immediately define the problem, gather data, compare options, "
                     "and delegate the lower-impact work. My assumption is that impact and risk matter more than activity.",
@@ -109,7 +109,7 @@ class HRInterviewSimulationRunner:
         inconsistencies = self._identify_scoring_inconsistencies(sessions)
 
         return {
-            "report_id": "hr-simulation-day-40",
+            "report_id": "hr-simulation-day-45-final",
             "generated_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
             "candidate_types_tested": [profile.candidate_type for profile in profiles],
             "sessions": sessions,
@@ -168,7 +168,7 @@ class HRInterviewSimulationRunner:
             evaluation_items,
         )
 
-        manual_score = profile.manual_evaluation["overall_score"]
+        manual_score = profile.manager_evaluation_feedback["overall_score"]
         ai_score = score_data["final_score"]
         return {
             "candidate_id": profile.candidate_id,
@@ -176,7 +176,8 @@ class HRInterviewSimulationRunner:
             "response_style": profile.response_style,
             "questions_tested": [reasoning_question.question_id, scenario.question_id],
             "ai_score": ai_score,
-            "manual_score": manual_score,
+            "manager_score": manual_score,
+            "manager_notes": profile.manager_evaluation_feedback.get("manager_notes", ""),
             "score_delta": round(ai_score - manual_score, 1),
             "score_data": score_data,
             "aptitude_results": [result.model_dump() for result in aptitude_results],
@@ -184,7 +185,7 @@ class HRInterviewSimulationRunner:
         }
 
     def _estimate_communication(self, profile: SimulatedCandidateProfile) -> float:
-        manual = profile.manual_evaluation["communication"]
+        manual = profile.manager_evaluation_feedback["communication"]
         if profile.candidate_type == "Hesitant":
             return manual - 4.0
         if profile.candidate_type == "Overqualified":
@@ -192,7 +193,7 @@ class HRInterviewSimulationRunner:
         return manual
 
     def _estimate_confidence(self, profile: SimulatedCandidateProfile) -> float:
-        manual = profile.manual_evaluation["confidence"]
+        manual = profile.manager_evaluation_feedback["confidence"]
         if profile.candidate_type == "Confident":
             return manual + 3.0
         if profile.candidate_type == "Hesitant":
