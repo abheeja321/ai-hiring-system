@@ -1,25 +1,28 @@
 import re
+from functools import lru_cache
 
 
 INTENT_KEYWORDS = {
-    "skills": ["skill", "python", "django", "sql", "aws", "communication"],
-    "experience": ["experience", "worked", "years", "project", "engineer", "developer"],
-    "location": ["bengaluru", "hyderabad", "remote", "location", "relocate"],
-    "salary": ["salary", "ctc", "compensation", "lpa", "package"],
-    "notice_period": ["notice", "join", "joining", "immediately", "days"],
-    "education": ["degree", "bachelor", "master", "university", "college"],
-    "introduction": ["i am", "my background", "myself", "currently"],
+    "skills": ["skill", "python", "django", "sql", "aws", "react", "communication", "leadership", "technical", "proficient", "expert"],
+    "experience": ["experience", "worked", "years", "project", "engineer", "developer", "role", "background"],
+    "location": ["bengaluru", "hyderabad", "remote", "location", "relocate", "willing to", "based in", "city"],
+    "salary": ["salary", "ctc", "compensation", "lpa", "package", "expectation", "k", "lakh"],
+    "notice_period": ["notice", "join", "joining", "immediately", "days", "weeks", "months", "availability"],
+    "education": ["degree", "bachelor", "master", "university", "college", "graduated", "b.tech", "m.tech", "bsc"],
+    "introduction": ["i am", "my background", "myself", "currently", "working as"],
+    "cultural_fit": ["culture", "team", "values", "mission", "collaboration", "environment", "growth", "mentor"],
 }
 
 
 KNOWN_SKILLS = {"python", "django", "sql", "aws", "react", "communication", "leadership", "nlp"}
 
 
-def classify_intent(text: str, question: dict | None = None) -> str:
+@lru_cache(maxsize=1024)
+def classify_intent(text: str, question_category: str | None = None) -> str:
     lowered = text.lower()
-    if len(lowered.split()) < 3:
+    if len(lowered.split()) < 2:
         return "vague"
-    expected_category = str((question or {}).get("category", "")).lower().replace(" ", "_")
+    expected_category = str(question_category or "").lower().replace(" ", "_")
     scores = {intent: sum(1 for keyword in keywords if keyword in lowered) for intent, keywords in INTENT_KEYWORDS.items()}
     best_intent = max(scores, key=scores.get)
     if scores[best_intent] == 0:
@@ -31,11 +34,12 @@ def classify_intent(text: str, question: dict | None = None) -> str:
     return best_intent
 
 
+@lru_cache(maxsize=1024)
 def extract_semantic_entities(text: str) -> dict:
     lowered = text.lower()
     skills = sorted({skill for skill in KNOWN_SKILLS if skill in lowered})
-    experience_details = re.findall(r"\b\d+\+?\s+years?\b", lowered)
-    salary_matches = re.findall(r"\b\d+\s*(?:lpa|lakhs?|k|thousand)\b", lowered)
+    experience_details = [m for m in re.findall(r"\b\d+(?:\.\d+)?\+?\s*(?:years?|yrs?|months?)\b", lowered) if not m.startswith("0")]
+    salary_matches = re.findall(r"\b\d+(?:\.\d+)?\s*(?:lpa|lakhs?|k|thousand)\b", lowered)
     notice_matches = re.findall(r"\b\d+\s*(?:days?|weeks?|months?)\b", lowered)
     availability = "immediate" if "immediate" in lowered else (notice_matches[0] if notice_matches else "")
     return {
@@ -47,7 +51,7 @@ def extract_semantic_entities(text: str) -> dict:
 
 
 def understand_answer(question: dict, normalized_text: str) -> dict:
-    intent = classify_intent(normalized_text, question)
+    intent = classify_intent(normalized_text, question.get("category"))
     entities = extract_semantic_entities(normalized_text)
     missing_information = []
     vagueness_flags = []

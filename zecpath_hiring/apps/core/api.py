@@ -1,8 +1,9 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
-from .models import AIArtifact, CandidateProfile, HiringRun, JobProfile, ScreeningInteraction
+from .models import AIArtifact, AIAuditLog, CandidateProfile, HiringRun, JobProfile, ScreeningInteraction
 from .serializers import (
     AIArtifactSerializer,
     CandidateProfileSerializer,
@@ -17,16 +18,19 @@ from zecpath_hiring.ai.ats_engine.pipeline import run_hiring_pipeline
 
 
 class JobProfileViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     queryset = JobProfile.objects.all().order_by("-created_at")
     serializer_class = JobProfileSerializer
 
 
 class CandidateProfileViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     queryset = CandidateProfile.objects.all().order_by("-created_at")
     serializer_class = CandidateProfileSerializer
 
 
 class HiringRunViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     queryset = HiringRun.objects.all().order_by("-created_at")
     serializer_class = HiringRunSerializer
 
@@ -76,6 +80,13 @@ class HiringRunViewSet(viewsets.ModelViewSet):
                 model_version="api-v1",
             )
 
+            AIAuditLog.objects.create(
+                run_id=str(hiring_run.id),
+                action="PIPELINE_RUN",
+                actor=request.user.username if request.user and request.user.is_authenticated else "SYSTEM",
+                details={"candidate": candidate_name, "job": job_title, "decision": result["decision"]["decision"]}
+            )
+
             response_data = HiringRunSerializer(hiring_run).data
             return Response(response_data, status=status.HTTP_201_CREATED)
         
@@ -83,10 +94,12 @@ class HiringRunViewSet(viewsets.ModelViewSet):
 
 
 class AIArtifactViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     queryset = AIArtifact.objects.all().order_by("-created_at")
     serializer_class = AIArtifactSerializer
 
 
 class ScreeningInteractionViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     queryset = ScreeningInteraction.objects.all().order_by("-created_at")
     serializer_class = ScreeningInteractionSerializer

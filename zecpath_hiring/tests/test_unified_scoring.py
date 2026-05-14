@@ -20,6 +20,8 @@ def test_unified_score_combines_ats_screening_and_hr_interview():
         "ats_score": 80.0,
         "screening_score": 70.0,
         "hr_interview_score": 90.0,
+        "tech_interview_score": 0.0,
+        "machine_test_score": 0.0,
     }
     assert round(sum(result.applied_weights.values()), 2) == 1.0
 
@@ -29,16 +31,20 @@ def test_role_based_weight_adjustment_changes_hiring_fit():
     base_weights = CrossRoundWeights(ats_weight=0.35, screening_weight=0.25, hr_interview_weight=0.40)
 
     technical_fit = engine.calculate_hiring_fit_percentage(
-        ats_score=95.0,
-        screening_score=65.0,
-        hr_interview_score=75.0,
+        ats_score=50.0,
+        screening_score=50.0,
+        hr_interview_score=50.0,
+        tech_interview_score=95.0,
+        machine_test_score=95.0,
         role_type=RoleType.TECHNICAL,
         weights=base_weights,
     )
     non_technical_fit = engine.calculate_hiring_fit_percentage(
-        ats_score=95.0,
-        screening_score=65.0,
-        hr_interview_score=75.0,
+        ats_score=50.0,
+        screening_score=50.0,
+        hr_interview_score=50.0,
+        tech_interview_score=95.0,
+        machine_test_score=95.0,
         role_type=RoleType.NON_TECHNICAL,
         weights=base_weights,
     )

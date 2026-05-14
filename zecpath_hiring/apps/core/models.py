@@ -18,6 +18,11 @@ class CandidateProfile(models.Model):
     raw_resume = models.TextField()
     structured_profile = models.JSONField(default=dict, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    # Consent and Governance
+    consent_given = models.BooleanField(default=False)
+    consent_timestamp = models.DateTimeField(null=True, blank=True)
+    data_retention_date = models.DateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.full_name
@@ -43,6 +48,10 @@ class AIArtifact(models.Model):
     payload = models.JSONField(default=dict, blank=True)
     model_version = models.CharField(max_length=100, default="v1")
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    # Secure Storage
+    is_encrypted = models.BooleanField(default=False)
+    encryption_key_id = models.CharField(max_length=255, blank=True)
 
 
 class ScreeningInteraction(models.Model):
@@ -57,3 +66,21 @@ class ScreeningInteraction(models.Model):
     answer_payload = models.JSONField(default=dict, blank=True)
     scoring_payload = models.JSONField(default=dict, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    # Secure Storage
+    is_encrypted = models.BooleanField(default=False)
+    encryption_key_id = models.CharField(max_length=255, blank=True)
+
+
+class AIAuditLog(models.Model):
+    """
+    Audit trail for AI decisions, scorings, and artifact access to ensure compliance.
+    """
+    run_id = models.CharField(max_length=255, blank=True)
+    action = models.CharField(max_length=255)
+    actor = models.CharField(max_length=255, default="SYSTEM")
+    timestamp = models.DateTimeField(auto_now_add=True)
+    details = models.JSONField(default=dict, blank=True)
+
+    def __str__(self) -> str:
+        return f"{self.action} by {self.actor} at {self.timestamp}"

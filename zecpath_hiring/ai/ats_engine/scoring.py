@@ -27,7 +27,7 @@ def calculate_ats_score(candidate: dict, job: dict) -> dict:
 def shortlist_band(score: float) -> str:
     if score >= 80:
         return "SHORTLIST"
-    if score >= 60:
+    if score >= 55:
         return "REVIEW"
     return "REJECT"
 

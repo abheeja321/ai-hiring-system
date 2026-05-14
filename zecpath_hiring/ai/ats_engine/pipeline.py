@@ -4,6 +4,8 @@ from zecpath_hiring.ai.behavior_ai.service import run_behavior_analysis
 from zecpath_hiring.ai.decision_ai.service import make_final_decision
 from zecpath_hiring.ai.interview_ai.service import run_interview_intelligence
 from zecpath_hiring.ai.screening_ai.service import run_screening
+from zecpath_hiring.ai.integrity.malpractice_evaluator import MalpracticeEvaluator
+from zecpath_hiring.ai.report_generator.generator import HiringIntelligenceReportGenerator
 from zecpath_hiring.ai.utils.logging import get_logger
 
 
@@ -17,14 +19,27 @@ def run_hiring_pipeline(candidate: dict, job: dict) -> dict:
     screening = run_screening(candidate, job, eligibility)
     interview = run_interview_intelligence(candidate, job)
     behavior = run_behavior_analysis(candidate)
-    decision = make_final_decision(ats, screening, interview, behavior)
+    
+    # Run Integrity Check
+    integrity_evaluator = MalpracticeEvaluator()
+    integrity_report = integrity_evaluator.evaluate_session(signals=[])
+    integrity_dict = integrity_report.model_dump() if hasattr(integrity_report, "model_dump") else (integrity_report.dict() if hasattr(integrity_report, "dict") else vars(integrity_report))
+    decision = make_final_decision(ats, screening, interview, behavior, integrity_dict)
     result = {
         "ats": {**ats, "shortlist_band": shortlist_band(ats["final_score"])},
         "eligibility": eligibility,
         "screening": screening,
         "interview": interview,
         "behavior": behavior,
+        "integrity": integrity_dict,
         "decision": decision,
     }
+    
+    # Generate full intelligence report
+    report_generator = HiringIntelligenceReportGenerator()
+    full_report = report_generator.generate_report(candidate.get("full_name", "Unknown"), job.get("title", "Unknown"), result)
+    result["intelligence_report"] = report_generator.export_to_dict(full_report)
+    result["intelligence_report_markdown"] = report_generator.export_to_markdown(full_report)
+    
     logger.info("Pipeline completed with decision %s and score %s", decision["decision"], decision["final_score"])
     return result

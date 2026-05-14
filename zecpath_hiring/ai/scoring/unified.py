@@ -7,18 +7,22 @@ from zecpath_hiring.ai.hr_interview.categories import RoleType
 
 
 class CrossRoundWeights(BaseModel):
-    ats_weight: float = 0.35
-    screening_weight: float = 0.25
-    hr_interview_weight: float = 0.40
+    ats_weight: float = 0.15
+    screening_weight: float = 0.10
+    hr_interview_weight: float = 0.20
+    tech_interview_weight: float = 0.30
+    machine_test_weight: float = 0.25
 
     def normalized(self) -> "CrossRoundWeights":
-        total = self.ats_weight + self.screening_weight + self.hr_interview_weight
+        total = self.ats_weight + self.screening_weight + self.hr_interview_weight + self.tech_interview_weight + self.machine_test_weight
         if total <= 0:
             return CrossRoundWeights()
         return CrossRoundWeights(
             ats_weight=round(self.ats_weight / total, 4),
             screening_weight=round(self.screening_weight / total, 4),
             hr_interview_weight=round(self.hr_interview_weight / total, 4),
+            tech_interview_weight=round(self.tech_interview_weight / total, 4),
+            machine_test_weight=round(self.machine_test_weight / total, 4),
         )
 
 
@@ -45,24 +49,32 @@ class UnifiedScoringEngine:
 
     ROLE_ADJUSTMENTS = {
         RoleType.TECHNICAL.value: {
-            "ats_weight": 0.05,
-            "screening_weight": -0.05,
+            "ats_weight": 0.0,
+            "screening_weight": 0.0,
             "hr_interview_weight": 0.0,
+            "tech_interview_weight": 0.0,
+            "machine_test_weight": 0.0,
         },
         RoleType.NON_TECHNICAL.value: {
-            "ats_weight": -0.05,
-            "screening_weight": 0.03,
-            "hr_interview_weight": 0.02,
+            "ats_weight": 0.20,
+            "screening_weight": 0.15,
+            "hr_interview_weight": 0.20,
+            "tech_interview_weight": -0.30,
+            "machine_test_weight": -0.25,
         },
         "Leadership": {
-            "ats_weight": -0.05,
+            "ats_weight": 0.05,
             "screening_weight": 0.0,
-            "hr_interview_weight": 0.05,
+            "hr_interview_weight": 0.10,
+            "tech_interview_weight": -0.10,
+            "machine_test_weight": -0.05,
         },
         "Fresher": {
             "ats_weight": -0.05,
             "screening_weight": 0.05,
             "hr_interview_weight": 0.0,
+            "tech_interview_weight": 0.0,
+            "machine_test_weight": 0.0,
         },
     }
 
@@ -72,24 +84,29 @@ class UnifiedScoringEngine:
         ats: Dict[str, Any],
         screening: Dict[str, Any],
         hr_interview: Dict[str, Any],
+        tech_interview: Dict[str, Any] = None,
+        machine_test: Dict[str, Any] = None,
         role_type: RoleType | str = RoleType.TECHNICAL,
         weights: CrossRoundWeights | None = None,
     ) -> UnifiedCandidateScore:
+        tech_interview = tech_interview or {}
+        machine_test = machine_test or {}
         base_weights = weights or self.DEFAULT_WEIGHTS
         role_name = role_type.value if isinstance(role_type, RoleType) else str(role_type)
         adjusted_weights = self.apply_role_adjustments(base_weights, role_name)
         input_scores = {
             "ats_score": self._extract_score(ats, ["final_score", "ats_score"]),
             "screening_score": self._extract_score(screening, ["screening_score", "final_score"]),
-            "hr_interview_score": self._extract_score(
-                hr_interview,
-                ["final_score", "interview_score", "overall_hr_score"],
-            ),
+            "hr_interview_score": self._extract_score(hr_interview, ["final_score", "interview_score", "overall_hr_score"]),
+            "tech_interview_score": self._extract_score(tech_interview, ["final_score", "overall_score"]),
+            "machine_test_score": self._extract_score(machine_test, ["final_score"]),
         }
         weighted_contributions = {
             "ats": round(input_scores["ats_score"] * adjusted_weights.ats_weight, 2),
             "screening": round(input_scores["screening_score"] * adjusted_weights.screening_weight, 2),
             "hr_interview": round(input_scores["hr_interview_score"] * adjusted_weights.hr_interview_weight, 2),
+            "tech_interview": round(input_scores["tech_interview_score"] * adjusted_weights.tech_interview_weight, 2),
+            "machine_test": round(input_scores["machine_test_score"] * adjusted_weights.machine_test_weight, 2),
         }
         hiring_fit = round(sum(weighted_contributions.values()), 2)
         risk_flags = self._risk_flags(input_scores, hiring_fit)
@@ -113,6 +130,8 @@ class UnifiedScoringEngine:
         ats_score: float,
         screening_score: float,
         hr_interview_score: float,
+        tech_interview_score: float = 0.0,
+        machine_test_score: float = 0.0,
         role_type: RoleType | str = RoleType.TECHNICAL,
         weights: CrossRoundWeights | None = None,
     ) -> float:
@@ -121,6 +140,8 @@ class UnifiedScoringEngine:
             {"final_score": ats_score},
             {"screening_score": screening_score},
             {"final_score": hr_interview_score},
+            {"final_score": tech_interview_score},
+            {"final_score": machine_test_score},
             role_type=role_type,
             weights=weights,
         )
@@ -132,6 +153,8 @@ class UnifiedScoringEngine:
             ats_weight=max(0.0, weights.ats_weight + adjustments.get("ats_weight", 0.0)),
             screening_weight=max(0.0, weights.screening_weight + adjustments.get("screening_weight", 0.0)),
             hr_interview_weight=max(0.0, weights.hr_interview_weight + adjustments.get("hr_interview_weight", 0.0)),
+            tech_interview_weight=max(0.0, weights.tech_interview_weight + adjustments.get("tech_interview_weight", 0.0)),
+            machine_test_weight=max(0.0, weights.machine_test_weight + adjustments.get("machine_test_weight", 0.0)),
         )
         return adjusted.normalized()
 
@@ -143,6 +166,8 @@ class UnifiedScoringEngine:
                 "ats": "Resume/job alignment, skill match, experience relevance, and education alignment.",
                 "screening": "Pre-interview answer clarity, relevance, completeness, consistency, and intent fit.",
                 "hr_interview": "Recruiter interview performance, communication, confidence, consistency, and aptitude logic.",
+                "tech_interview": "Domain expertise, technical depth, logic, and real-world applicability.",
+                "machine_test": "Correctness, algorithmic efficiency, code quality, and problem-solving approach.",
             },
         }
 
@@ -158,11 +183,11 @@ class UnifiedScoringEngine:
     def _decision_band(self, hiring_fit: float) -> str:
         if hiring_fit >= 85:
             return "Strong hire"
-        if hiring_fit >= 75:
+        if hiring_fit >= 80:
             return "Hire"
-        if hiring_fit >= 65:
+        if hiring_fit >= 70:
             return "Final review"
-        if hiring_fit >= 55:
+        if hiring_fit >= 60:
             return "Hold"
         return "Reject"
 
@@ -177,15 +202,24 @@ class UnifiedScoringEngine:
 
     def _risk_flags(self, input_scores: Dict[str, float], hiring_fit: float) -> List[str]:
         flags = []
-        if input_scores["ats_score"] < 60:
+        if input_scores["ats_score"] > 0 and input_scores["ats_score"] < 65:
             flags.append("ATS score is below baseline fit threshold.")
-        if input_scores["screening_score"] < 60:
+        if input_scores["screening_score"] > 0 and input_scores["screening_score"] < 65:
             flags.append("Screening score indicates weak pre-interview signal.")
-        if input_scores["hr_interview_score"] < 60:
+        if input_scores["hr_interview_score"] > 0 and input_scores["hr_interview_score"] < 65:
             flags.append("HR interview score indicates weak live interview performance.")
-        score_spread = max(input_scores.values()) - min(input_scores.values())
-        if score_spread >= 30:
-            flags.append("Cross-round scores are inconsistent and need recruiter review.")
+        if input_scores["tech_interview_score"] > 0 and input_scores["tech_interview_score"] < 65:
+            flags.append("Technical interview performance is below expected baseline.")
+        if input_scores["machine_test_score"] > 0 and input_scores["machine_test_score"] < 65:
+            flags.append("Machine test execution indicates lack of practical proficiency.")
+            
+        # Only compare scores that were actually factored in (i.e. > 0)
+        active_scores = [v for v in input_scores.values() if v > 0]
+        if active_scores:
+            score_spread = max(active_scores) - min(active_scores)
+            if score_spread >= 25:
+                flags.append("Cross-round scores are inconsistent and need recruiter review.")
+                
         if hiring_fit < 65:
             flags.append("Hiring fit is below final-review threshold.")
         return flags

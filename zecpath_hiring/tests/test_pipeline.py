@@ -16,4 +16,4 @@ class PipelineTests(unittest.TestCase):
             "Looking for 4+ years with Python, Django, SQL and communication skills.",
         )
         result = run_hiring_pipeline(candidate, job)
-        self.assertIn(result["decision"]["decision"], {"OFFER", "FINAL_REVIEW", "REJECT"})
+        self.assertIn(result["decision"]["decision"], {"SELECTED", "HOLD_REVIEW", "REJECTED"})
