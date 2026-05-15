@@ -16,14 +16,34 @@ def run_hiring_pipeline(candidate: dict, job: dict) -> dict:
     logger.info("Starting hiring pipeline for %s against %s", candidate.get("full_name"), job.get("title"))
     ats = calculate_ats_score(candidate, job)
     eligibility = evaluate_candidate_eligibility(candidate, job, ats)
-    screening = run_screening(candidate, job, eligibility)
-    interview = run_interview_intelligence(candidate, job)
-    behavior = run_behavior_analysis(candidate)
+    try:
+        screening = run_screening(candidate, job, eligibility)
+    except Exception as e:
+        logger.error(f"Screening failed: {e}")
+        screening = {"screening_score": 0.0, "error": str(e)}
+        
+    try:
+        interview = run_interview_intelligence(candidate, job)
+    except Exception as e:
+        logger.error(f"Interview intelligence failed: {e}")
+        interview = {"interview_score": 0.0, "error": str(e)}
+        
+    try:
+        behavior = run_behavior_analysis(candidate)
+    except Exception as e:
+        logger.error(f"Behavior analysis failed: {e}")
+        behavior = {"behavior_score": 50.0, "error": str(e)}
     
     # Run Integrity Check
-    integrity_evaluator = MalpracticeEvaluator()
-    integrity_report = integrity_evaluator.evaluate_session(signals=[])
-    integrity_dict = integrity_report.model_dump() if hasattr(integrity_report, "model_dump") else (integrity_report.dict() if hasattr(integrity_report, "dict") else vars(integrity_report))
+    try:
+        # Pass the entire structured profile text so NLP can detect descriptive behavioral anomalies
+        behavior_text = str(candidate)
+        integrity_evaluator = MalpracticeEvaluator()
+        integrity_report = integrity_evaluator.evaluate_session(signals=[], behavior_text=behavior_text)
+        integrity_dict = integrity_report.model_dump() if hasattr(integrity_report, "model_dump") else (integrity_report.dict() if hasattr(integrity_report, "dict") else vars(integrity_report))
+    except Exception as e:
+        logger.error(f"Integrity check failed: {e}")
+        integrity_dict = {"risk_level": "UNKNOWN", "integrity_score": 100.0, "flags": [f"Error: {e}"]}
     decision = make_final_decision(ats, screening, interview, behavior, integrity_dict)
     result = {
         "ats": {**ats, "shortlist_band": shortlist_band(ats["final_score"])},

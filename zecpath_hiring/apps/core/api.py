@@ -38,57 +38,63 @@ class HiringRunViewSet(viewsets.ModelViewSet):
     def run_pipeline(self, request):
         serializer = PipelineRunRequestSerializer(data=request.data)
         if serializer.is_valid():
-            data = serializer.validated_data
-            job_title = data["job_title"]
-            job_description = data["job_description"]
-            candidate_name = data["candidate_name"]
-            resume_text = data.get("resume_text", "")
+            try:
+                data = serializer.validated_data
+                job_title = data["job_title"]
+                job_description = data["job_description"]
+                candidate_name = data["candidate_name"]
+                resume_text = data.get("resume_text", "")
 
-            structured_job = parse_job_description(job_title, job_description)
-            structured_resume = parse_resume_text(candidate_name, resume_text)
+                structured_job = parse_job_description(job_title, job_description)
+                structured_resume = parse_resume_text(candidate_name, resume_text)
 
-            job = JobProfile.objects.create(
-                title=job_title,
-                raw_description=job_description,
-                structured_profile=structured_job,
-            )
-            candidate = CandidateProfile.objects.create(
-                full_name=candidate_name,
-                raw_resume=resume_text,
-                structured_profile=structured_resume,
-            )
+                job = JobProfile.objects.create(
+                    title=job_title,
+                    raw_description=job_description,
+                    structured_profile=structured_job,
+                )
+                candidate = CandidateProfile.objects.create(
+                    full_name=candidate_name,
+                    raw_resume=resume_text,
+                    structured_profile=structured_resume,
+                )
 
-            result = run_hiring_pipeline(structured_resume, structured_job)
-            
-            hiring_run = HiringRun.objects.create(
-                candidate=candidate,
-                job=job,
-                ats_score=result["ats"]["final_score"],
-                screening_score=result["screening"]["screening_score"],
-                interview_score=result["interview"]["interview_score"],
-                behavior_score=result["behavior"]["behavior_score"],
-                final_score=result["decision"]["final_score"],
-                decision=result["decision"]["decision"],
-                explanation=result,
-            )
+                result = run_hiring_pipeline(structured_resume, structured_job)
+                
+                hiring_run = HiringRun.objects.create(
+                    candidate=candidate,
+                    job=job,
+                    ats_score=result["ats"]["final_score"],
+                    screening_score=result["screening"]["screening_score"],
+                    interview_score=result["interview"]["interview_score"],
+                    behavior_score=result["behavior"]["behavior_score"],
+                    final_score=result["decision"]["final_score"],
+                    decision=result["decision"]["decision"],
+                    explanation=result,
+                )
 
-            AIArtifact.objects.create(
-                artifact_type="pipeline_result",
-                candidate=candidate,
-                job=job,
-                payload=result,
-                model_version="api-v1",
-            )
+                AIArtifact.objects.create(
+                    artifact_type="pipeline_result",
+                    candidate=candidate,
+                    job=job,
+                    payload=result,
+                    model_version="api-v1",
+                )
 
-            AIAuditLog.objects.create(
-                run_id=str(hiring_run.id),
-                action="PIPELINE_RUN",
-                actor=request.user.username if request.user and request.user.is_authenticated else "SYSTEM",
-                details={"candidate": candidate_name, "job": job_title, "decision": result["decision"]["decision"]}
-            )
+                AIAuditLog.objects.create(
+                    run_id=str(hiring_run.id),
+                    action="PIPELINE_RUN",
+                    actor=request.user.username if request.user and request.user.is_authenticated else "SYSTEM",
+                    details={"candidate": candidate_name, "job": job_title, "decision": result["decision"]["decision"]}
+                )
 
-            response_data = HiringRunSerializer(hiring_run).data
-            return Response(response_data, status=status.HTTP_201_CREATED)
+                response_data = HiringRunSerializer(hiring_run).data
+                return Response(response_data, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                import traceback
+                error_details = traceback.format_exc()
+                # Fallback API response for pipeline crashes
+                return Response({"error": "Internal Server Error", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

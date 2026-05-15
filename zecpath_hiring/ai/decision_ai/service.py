@@ -23,6 +23,11 @@ class DecisionEngine:
         integrity_risk = "LOW"
         if integrity:
             integrity_risk = integrity.get("risk_level", "LOW")
+            
+        if integrity_risk == "UNKNOWN":
+            integrity_risk = "LOW"
+            confidence_penalties += 10.0
+            explanation.append("[CONFIDENCE] Integrity risk was UNKNOWN, defaulting to LOW but applying a penalty.")
         
         # --- RULE-BASED EVALUATION (Hard Limits) ---
         hard_reject = False
@@ -52,10 +57,10 @@ class DecisionEngine:
         if hard_reject:
             decision = "REJECTED"
         else:
-            if final_score >= 82 and integrity_risk == "LOW":
+            if final_score >= 80 and integrity_risk == "LOW":
                 decision = "SELECTED"
                 explanation.append(f"Candidate passed all thresholds and achieved a high composite score ({final_score}).")
-            elif final_score >= 68:
+            elif final_score >= 60:
                 decision = "HOLD_REVIEW"
                 explanation.append(f"Candidate achieved a moderate score ({final_score}). Requires manual review.")
                 if integrity_risk == "MEDIUM":

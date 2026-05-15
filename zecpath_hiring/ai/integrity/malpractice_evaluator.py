@@ -34,11 +34,11 @@ class MalpracticeEvaluator:
         self.TAB_SWITCH_CRITICAL_THRESHOLD = 5
         self.EXTERNAL_VOICE_THRESHOLD = 2
 
-    def evaluate_session(self, signals: List[IntegritySignalFrame], behavior: Optional[BehavioralIndicator] = None) -> IntegrityReport:
+    def evaluate_session(self, signals: List[IntegritySignalFrame], behavior: Optional[BehavioralIndicator] = None, behavior_text: str = "") -> IntegrityReport:
         """
         Analyzes a session's worth of signals to generate a final integrity report.
         """
-        if not signals:
+        if not signals and not behavior and not behavior_text:
             return IntegrityReport(
                 integrity_score=100.0,
                 risk_level="LOW",
@@ -87,6 +87,19 @@ class MalpracticeEvaluator:
             if total_tab_switches == 0 and behavior.distraction_frequency >= 5 and behavior.focus_level < 50.0:
                 score -= 25.0
                 flags.append("[RISK: MEDIUM] Composite Pattern: High visual deviation without tab switching (Possible secondary monitor).")
+
+        # 5. Semantic NLP Analysis for Behavioral Anomalies
+        if behavior_text:
+            text_lower = behavior_text.lower()
+            critical_flags = ["refused", "uncooperative", "cheating", "fraud", "fake"]
+            medium_flags = ["evasive", "inconsistent", "nervous", "suspicious"]
+            
+            if any(f in text_lower for f in critical_flags):
+                score -= 60.0
+                flags.append("[RISK: CRITICAL] Behavioral text indicates severe non-compliance or refusal.")
+            elif any(f in text_lower for f in medium_flags):
+                score -= 25.0
+                flags.append("[RISK: MEDIUM] Behavioral text indicates evasive or inconsistent responses.")
 
         # Cap score
         final_score = max(0.0, min(100.0, score))
