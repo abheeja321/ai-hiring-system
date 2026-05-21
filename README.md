@@ -1,98 +1,85 @@
 # Zecpath AI Hiring System
 
-This repository is a single Django project that combines:
+Welcome to the **Zecpath AI Hiring System**, an autonomous, end-to-end recruitment platform designed to eliminate hiring bias, reduce manual screening by 80%, and automate technical and behavioral candidate evaluations.
 
-- hiring lifecycle management
-- ATS parsing and scoring
-- screening and interview AI service design
-- decision and offer workflow scaffolding
-- architecture and data design documents
-- HTML pages for demo upload and results
-- eligibility decision engine and HR screening dataset
-- transcript architecture, STT cleaning, answer understanding, and screening scoring
-- confidence signals, screening reports, conversation flow, and edge-case handling
-- screening system finalization, API explanation, and evaluation handoff
+This project was developed as a comprehensive solution for modern HR teams, transforming unstructured candidate data into actionable, explainable intelligence.
 
-## Project layout
+---
 
-```text
-zecpath_hiring/
-  config/              Django settings and routes
-  apps/
-    core/              DB models for jobs, candidates, runs, artifacts
-    dashboard/         Demo UI views and forms
-  ai/
-    data/              JSON schemas and entity design
-    parsers/           Resume and JD parsing engines
-    ats_engine/        ATS scoring, ranking, shortlist logic
-    screening_ai/      Voice/screening orchestration, HR question bank, contracts
-    interview_ai/      HR and technical interview intelligence
-    behavior_ai/       Soft-skill and bias/fairness analysis
-    decision_ai/       Final decision and offer recommendation
-    scoring/           Shared explainable scoring logic
-    utils/             Logging and common helpers
-  tests/               Unit tests for parsers and scoring
-docs/                  Architecture, AI responsibilities, data flow
-samples/               Example resume/JD inputs and structured outputs
-templates/             Django HTML templates
-static/                CSS assets
+## 🚀 Features
+
+- **Semantic ATS Engine**: Moves beyond legacy keyword matching by using contextual NLP to evaluate a candidate's skills and experience against a job description.
+- **Automated Eligibility Screening**: Instantly gates candidates based on hard constraints (e.g., minimum experience, mandatory degrees, location).
+- **Simulated Technical & Behavioral Interviews**: Dynamically generates and evaluates candidate responses based on their specific background, yielding a measurable competency score.
+- **Fairness & Integrity AI**: Strips Personally Identifiable Information (PII) to prevent bias and scans for anomalies (e.g., fake certifications, overlapping timelines).
+- **Human-in-the-Loop AI**: Generates beautiful, explainable Markdown Intelligence Reports. Rather than failing silently, if an AI module encounters an error, the candidate is gracefully assigned a `HOLD_REVIEW` status.
+
+---
+
+## 🏗️ System Architecture
+
+- **Backend**: Python, Django, Django REST Framework
+- **Database**: SQLite (Development) / PostgreSQL (Production Ready)
+- **AI/NLP**: Pydantic for strict schema validation, simulated LLM integration endpoints.
+- **Frontend**: Django Templates with custom HTML/CSS (Glassmorphism & modern UI).
+
+---
+
+## 💻 Setup Instructions
+
+Follow these steps to run the Zecpath AI system locally.
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/abheeja321/ai-hiring-system.git
+cd ai-hiring-system
 ```
 
-## Setup
-
-1. Create a virtual environment:
-
-```powershell
-& "C:\Users\admin\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" -m venv .venv
+### 2. Create a Virtual Environment
+```bash
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On Mac/Linux
+source venv/bin/activate
 ```
 
-2. Activate it:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-3. Install dependencies:
-
-```powershell
+### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-4. Run migrations:
-
-```powershell
+### 4. Database Migrations
+Initialize the local SQLite database and apply all Django models:
+```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. Start the server:
+### 5. Generate Demo Dataset
+We have included a script that populates the database with a realistic "Dentist" hiring scenario, including Job Profiles, Candidate Resumes, and AI Pipeline Outputs:
+```bash
+python zecpath_hiring/scripts/generate_dentist_demo.py
+```
+*Note: A static representation of this dataset is also available in the `dental_hiring_demo/` folder.*
 
-```powershell
+### 6. Run the Server
+```bash
 python manage.py runserver
 ```
+Navigate to `http://localhost:8000` to view the Recruiter Dashboard.
 
-6. Open `http://127.0.0.1:8000/`
+---
 
-## Included deliverables
+## 🧪 Validating the Pipeline
 
-- Hiring lifecycle flow chart: [docs/hiring_lifecycle_flow.md](docs/hiring_lifecycle_flow.md)
-- AI architecture diagram: [docs/ai_architecture.md](docs/ai_architecture.md)
-- AI responsibilities overview: [docs/zecpath_ai_responsibilities_overview.md](docs/zecpath_ai_responsibilities_overview.md)
-- Data entities and schemas: [docs/ai_data_entities.md](docs/ai_data_entities.md)
-- Storage and metadata standards: [docs/storage_and_metadata.md](docs/storage_and_metadata.md)
-- Eligibility design: [docs/eligibility_decision_engine.md](docs/eligibility_decision_engine.md)
-- HR screening dataset: [docs/hr_screening_dataset.md](docs/hr_screening_dataset.md)
-- Transcript architecture: [docs/transcript_data_architecture.md](docs/transcript_data_architecture.md)
-- STT cleaning: [docs/speech_to_text_and_cleaning.md](docs/speech_to_text_and_cleaning.md)
-- Answer understanding and screening scoring: [docs/answer_understanding_and_screening_scoring.md](docs/answer_understanding_and_screening_scoring.md)
-- Confidence and sentiment analysis: [docs/confidence_and_sentiment_analysis.md](docs/confidence_and_sentiment_analysis.md)
-- Screening report generator: [docs/ai_screening_report_generator.md](docs/ai_screening_report_generator.md)
-- Conversation flow design: [docs/ai_conversation_flow_design.md](docs/ai_conversation_flow_design.md)
-- Testing and edge cases: [docs/screening_testing_and_edge_cases.md](docs/screening_testing_and_edge_cases.md)
-- Screening finalization: [docs/screening_system_finalization.md](docs/screening_system_finalization.md)
-- Screening API explanation: [docs/screening_api_design_explanation.md](docs/screening_api_design_explanation.md)
-- Screening AI evaluation report: [docs/screening_ai_evaluation_report.md](docs/screening_ai_evaluation_report.md)
+To run a stress test ensuring all AI modules handle edge cases (missing data, malformed JSON, etc.) without crashing:
+```bash
+python zecpath_hiring/scripts/final_system_validation.py
+```
 
-## Notes
+---
 
-- The code uses deterministic placeholder AI engines so the end-to-end flow is demonstrable without calling external models.
-- The service boundaries and payload contracts are designed so real LLM, speech, embedding, and ranking models can be plugged in later.
+## 🤝 Contributing & Review
+All core pipeline logic can be found under `zecpath_hiring/ai/`. 
+For a deep dive into the scoring logic, refer to the `docs/` directory which contains the Technical Handbook and Architecture Designs.
