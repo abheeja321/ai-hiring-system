@@ -1,0 +1,6 @@
+Job_ID,Role,Qualification,Experience,Skills,Location,Salary
+DEN001,General Dentist,BDS,2+ years,"Clinical diagnosis, communication",Kochi,"₹40,000/month"
+DEN002,Orthodontist,MDS Orthodontics,3+ years,"Braces, Aligners, Facial growth analysis",Bangalore,"₹80,000/month"
+DEN003,Pediatric Dentist,MDS Pediatric,1+ years,"Child behavior management, Preventive dentistry",Mumbai,"₹60,000/month"
+DEN004,Implantologist,MDS / Cert in Implants,5+ years,"Surgical precision, Implant systems",Delhi,"₹100,000/month"
+DEN005,Dental AI Researcher,BDS + Data Science,0-2 years,"Python, Clinical NLP, Research",Remote,"₹70,000/month"

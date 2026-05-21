@@ -20,19 +20,19 @@ def run_hiring_pipeline(candidate: dict, job: dict) -> dict:
         screening = run_screening(candidate, job, eligibility)
     except Exception as e:
         logger.error(f"Screening failed: {e}")
-        screening = {"screening_score": 0.0, "error": str(e)}
+        screening = {"screening_score": "ERROR", "error": str(e)}
         
     try:
         interview = run_interview_intelligence(candidate, job)
     except Exception as e:
         logger.error(f"Interview intelligence failed: {e}")
-        interview = {"interview_score": 0.0, "error": str(e)}
+        interview = {"interview_score": "ERROR", "error": str(e)}
         
     try:
         behavior = run_behavior_analysis(candidate)
     except Exception as e:
         logger.error(f"Behavior analysis failed: {e}")
-        behavior = {"behavior_score": 50.0, "error": str(e)}
+        behavior = {"behavior_score": "ERROR", "error": str(e)}
     
     # Run Integrity Check
     try:
@@ -43,7 +43,8 @@ def run_hiring_pipeline(candidate: dict, job: dict) -> dict:
         integrity_dict = integrity_report.model_dump() if hasattr(integrity_report, "model_dump") else (integrity_report.dict() if hasattr(integrity_report, "dict") else vars(integrity_report))
     except Exception as e:
         logger.error(f"Integrity check failed: {e}")
-        integrity_dict = {"risk_level": "UNKNOWN", "integrity_score": 100.0, "flags": [f"Error: {e}"]}
+        integrity_dict = {"risk_level": "ERROR", "integrity_score": "ERROR", "flags": [f"System Error: {e}"]}
+        
     decision = make_final_decision(ats, screening, interview, behavior, integrity_dict)
     result = {
         "ats": {**ats, "shortlist_band": shortlist_band(ats["final_score"])},

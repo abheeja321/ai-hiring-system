@@ -12,19 +12,37 @@ class DecisionEngine:
     def evaluate(self, ats: Dict[str, Any], screening: Dict[str, Any], interview: Dict[str, Any], behavior: Dict[str, Any], integrity: Dict[str, Any] = None) -> Dict[str, Any]:
         explanation: List[str] = []
         confidence_penalties = 0.0
+        has_error = False
         
+        def safe_float(val, module_name):
+            nonlocal has_error
+            if val == "ERROR" or val == "UNKNOWN":
+                has_error = True
+                explanation.append(f"[SYSTEM] {module_name} module failed. Defaulting to HOLD_REVIEW.")
+                return 0.0
+            try:
+                return float(val)
+            except (ValueError, TypeError):
+                has_error = True
+                explanation.append(f"[SYSTEM] {module_name} score unparseable. Defaulting to HOLD_REVIEW.")
+                return 0.0
+
         # Base scores
-        ats_score = float(ats.get("final_score", 0))
-        screening_score = float(screening.get("screening_score", 0))
-        interview_score = float(interview.get("interview_score", 0))
-        behavior_score = float(behavior.get("behavior_score", 0))
+        ats_score = safe_float(ats.get("final_score", 0), "ATS")
+        screening_score = safe_float(screening.get("screening_score", 0), "Screening")
+        interview_score = safe_float(interview.get("interview_score", 0), "Interview")
+        behavior_score = safe_float(behavior.get("behavior_score", 0), "Behavior")
         
         # Risk levels
         integrity_risk = "LOW"
         if integrity:
             integrity_risk = integrity.get("risk_level", "LOW")
             
-        if integrity_risk == "UNKNOWN":
+        if integrity_risk == "ERROR":
+            integrity_risk = "LOW"
+            has_error = True
+            explanation.append("[SYSTEM] Integrity check failed. Defaulting to HOLD_REVIEW.")
+        elif integrity_risk == "UNKNOWN":
             integrity_risk = "LOW"
             confidence_penalties += 10.0
             explanation.append("[CONFIDENCE] Integrity risk was UNKNOWN, defaulting to LOW but applying a penalty.")
@@ -36,11 +54,11 @@ class DecisionEngine:
             hard_reject = True
             explanation.append(f"[RULE] Candidate rejected due to {integrity_risk} integrity risk.")
         
-        if behavior_score < 35:
+        if behavior_score < 35 and behavior.get("behavior_score") != "ERROR":
             hard_reject = True
             explanation.append("[RULE] Candidate rejected due to extremely low behavior score (<35).")
             
-        if interview_score < 55:
+        if interview_score < 55 and interview.get("interview_score") != "ERROR":
             hard_reject = True
             explanation.append("[RULE] Candidate rejected due to failing technical interview threshold (<55).")
 
@@ -54,7 +72,10 @@ class DecisionEngine:
         )
         
         # Determine Decision
-        if hard_reject:
+        if has_error:
+            decision = "HOLD_REVIEW"
+            confidence_penalties += 50.0
+        elif hard_reject:
             decision = "REJECTED"
         else:
             if final_score >= 80 and integrity_risk == "LOW":
@@ -77,8 +98,8 @@ class DecisionEngine:
         std_dev = variance ** 0.5
         
         # Penalty for high variance
-        if std_dev > 15:
-            confidence_penalties += 15
+        if std_dev > 15 and not has_error:
+            confidence_penalties += 10
             explanation.append("[CONFIDENCE] Moderate penalty due to inconsistent scores across stages.")
             
         # Penalty for borderline decisions
@@ -90,7 +111,7 @@ class DecisionEngine:
             explanation.append("[CONFIDENCE] Borderline score around the HOLD/REJECT threshold reduces confidence.")
             
         # Missing data penalty
-        if not integrity:
+        if not integrity and not has_error:
             confidence_penalties += 20
             explanation.append("[CONFIDENCE] Missing integrity data reduces overall decision confidence.")
             

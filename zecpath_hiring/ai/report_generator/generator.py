@@ -9,11 +9,19 @@ class HiringIntelligenceReportGenerator:
         profile = CandidateProfile(name=candidate_name, role=job_title)
         
         # 2. Extract Scores
-        ats_score = float(pipeline_result.get("ats", {}).get("final_score", 0))
-        screening_score = float(pipeline_result.get("screening", {}).get("screening_score", 0))
-        interview_score = float(pipeline_result.get("interview", {}).get("interview_score", 0))
-        behavior_score = float(pipeline_result.get("behavior", {}).get("behavior_score", 0))
-        integrity_score = float(pipeline_result.get("integrity", {}).get("integrity_score", 100.0))
+        def safe_score(val):
+            if val == "ERROR":
+                return "ERROR"
+            try:
+                return float(val)
+            except (ValueError, TypeError):
+                return "ERROR"
+                
+        ats_score = safe_score(pipeline_result.get("ats", {}).get("final_score", 0))
+        screening_score = safe_score(pipeline_result.get("screening", {}).get("screening_score", 0))
+        interview_score = safe_score(pipeline_result.get("interview", {}).get("interview_score", 0))
+        behavior_score = safe_score(pipeline_result.get("behavior", {}).get("behavior_score", 0))
+        integrity_score = safe_score(pipeline_result.get("integrity", {}).get("integrity_score", 100.0))
         
         scores = ModuleSummary(
             ats_score=ats_score,
@@ -29,31 +37,31 @@ class HiringIntelligenceReportGenerator:
         risk_indicators = []
         
         # ATS logic
-        if ats_score >= 80:
+        if ats_score != "ERROR" and ats_score >= 80:
             strengths.append(f"Strong resume match for the {job_title} role (ATS: {ats_score}).")
-        elif ats_score < 60:
+        elif ats_score != "ERROR" and ats_score < 60:
             weaknesses.append("Resume shows gaps in required skills or experience.")
             
         # Screening logic
-        if screening_score >= 85:
+        if screening_score != "ERROR" and screening_score >= 85:
             strengths.append("Exceptional performance in initial screening and aptitude.")
-        elif screening_score < 60:
+        elif screening_score != "ERROR" and screening_score < 60:
             weaknesses.append("Struggled with baseline screening questions.")
             
         # Technical/Interview logic
-        if interview_score >= 85:
+        if interview_score != "ERROR" and interview_score >= 85:
             strengths.append(f"Demonstrated high technical proficiency in interview (Score: {interview_score}).")
-        elif interview_score < 50:
+        elif interview_score != "ERROR" and interview_score < 50:
             weaknesses.append("Failed to meet technical interview benchmarks.")
             
         # Behavior & Integrity logic
-        if behavior_score >= 80:
+        if behavior_score != "ERROR" and behavior_score >= 80:
             strengths.append("High behavioral confidence and positive communication style.")
-        elif behavior_score < 50:
+        elif behavior_score != "ERROR" and behavior_score < 50:
             risk_indicators.append("Low behavioral score; possible communication or confidence issues.")
             
         integrity_flags = pipeline_result.get("integrity", {}).get("flags", [])
-        if integrity_score < 70 or integrity_flags:
+        if (integrity_score != "ERROR" and integrity_score < 70) or integrity_flags:
             risk_indicators.extend(integrity_flags)
             risk_indicators.append("Elevated integrity risk detected during session.")
             
@@ -77,42 +85,48 @@ class HiringIntelligenceReportGenerator:
         )
         
     def export_to_markdown(self, report: FullCandidateReport) -> str:
-        md = f"# Hiring Intelligence Report: {report.candidate.name}\n"
+        decision_emoji = "🟢" if report.recommendation.decision == "SELECTED" else ("🟡" if report.recommendation.decision == "HOLD_REVIEW" else "🔴")
+        
+        md = f"# 📊 Hiring Intelligence Report\n\n"
+        md += f"**Candidate Name:** {report.candidate.name}\n"
         md += f"**Role Evaluated:** {report.candidate.role}\n\n"
         
-        md += "## Final Recommendation\n"
-        md += f"- **Decision:** `{report.recommendation.decision}`\n"
+        md += "## 🎯 Final Recommendation\n"
+        md += f"- **Decision:** {decision_emoji} `{report.recommendation.decision}`\n"
         md += f"- **AI Confidence Score:** {report.recommendation.confidence_score}%\n"
         md += f"- **Explanation:** {report.recommendation.explanation}\n\n"
         
-        md += "## Module Breakdown\n"
-        md += f"- **ATS Match:** {report.scores.ats_score}/100\n"
-        md += f"- **Screening:** {report.scores.screening_score}/100\n"
-        md += f"- **HR/Tech Interview:** {report.scores.interview_score}/100\n"
-        md += f"- **Behavioral:** {report.scores.behavior_score}/100\n"
-        md += f"- **Integrity:** {report.scores.integrity_score}/100\n\n"
+        def format_score(score):
+            return "⚠️ ERROR" if score == "ERROR" else f"{score}/100"
+
+        md += "## 📈 Module Breakdown\n"
+        md += f"- **ATS Match:** {format_score(report.scores.ats_score)}\n"
+        md += f"- **Screening:** {format_score(report.scores.screening_score)}\n"
+        md += f"- **HR/Tech Interview:** {format_score(report.scores.interview_score)}\n"
+        md += f"- **Behavioral:** {format_score(report.scores.behavior_score)}\n"
+        md += f"- **Integrity:** {format_score(report.scores.integrity_score)}\n\n"
         
-        md += "## Key Insights\n"
-        md += "### Strengths\n"
+        md += "## 💡 Key Insights\n"
+        md += "### 🌟 Strengths\n"
         if report.insights.strengths:
             for s in report.insights.strengths:
                 md += f"- {s}\n"
         else:
-            md += "- No major strengths identified.\n"
+            md += "- *No major strengths identified.*\n"
             
-        md += "\n### Weaknesses\n"
+        md += "\n### 📉 Weaknesses\n"
         if report.insights.weaknesses:
             for w in report.insights.weaknesses:
                 md += f"- {w}\n"
         else:
-            md += "- No major weaknesses identified.\n"
+            md += "- *No major weaknesses identified.*\n"
             
-        md += "\n### Risk Indicators\n"
+        md += "\n### 🚨 Risk Indicators\n"
         if report.insights.risk_indicators:
             for r in report.insights.risk_indicators:
                 md += f"- {r}\n"
         else:
-            md += "- No risks detected. Safe profile.\n"
+            md += "- *No risks detected. Safe profile.*\n"
             
         return md
 

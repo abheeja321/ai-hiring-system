@@ -5,12 +5,14 @@ class CandidateProfile(BaseModel):
     name: str = Field(default="Unknown Candidate")
     role: str = Field(default="Unknown Role")
 
+from typing import Union
+
 class ModuleSummary(BaseModel):
-    ats_score: float = Field(default=0.0)
-    screening_score: float = Field(default=0.0)
-    interview_score: float = Field(default=0.0)
-    behavior_score: float = Field(default=0.0)
-    integrity_score: float = Field(default=100.0)
+    ats_score: Union[float, str] = Field(default=0.0)
+    screening_score: Union[float, str] = Field(default=0.0)
+    interview_score: Union[float, str] = Field(default=0.0)
+    behavior_score: Union[float, str] = Field(default=0.0)
+    integrity_score: Union[float, str] = Field(default=100.0)
 
 class KeyInsights(BaseModel):
     strengths: List[str] = Field(default_factory=list)

@@ -1,0 +1,6 @@
+Candidate_ID,Question_Type,Question,Answer_Transcript,Evaluation_Score,Feedback
+CAND001,Technical,Explain root canal treatment.,Root canal treatment removes infected pulp tissue and seals the tooth to prevent reinfection.,90,Accurate and concise.
+CAND002,Technical,Explain root canal treatment.,It involves cleaning the tooth when it hurts.,65,"Too simplistic, lacking medical terminology."
+CAND003,Technical,Explain root canal treatment.,It is treatment for teeth pain.,40,Inaccurate and lacks depth.
+CAND004,Behavioral,How do you handle an anxious patient?,I take time to explain the procedure and use calming techniques before starting.,95,Great empathy and process.
+CAND005,Behavioral,How do you handle an anxious patient?,"I just tell them to relax, it won't hurt.",50,Lacks empathy and proper management.

@@ -1,5 +1,7 @@
 import re
 from collections import Counter
+from functools import lru_cache
+from concurrent.futures import ThreadPoolExecutor
 
 from .common import normalize_text, split_sections
 
@@ -49,6 +51,7 @@ def _extract_experience(section_text: str) -> list[dict]:
     return entries
 
 
+@lru_cache(maxsize=512)
 def parse_resume_text(candidate_name: str, text: str) -> dict:
     normalized = normalize_text(text)
     sections = split_sections(normalized)
@@ -67,3 +70,26 @@ def parse_resume_text(candidate_name: str, text: str) -> dict:
         "projects": [{"name": "Project", "description": line, "skills": []} for line in sections.get("projects", "").splitlines() if line.strip()],
         "keywords": keywords,
     }
+
+
+def parse_resumes_batch(resumes: list[dict], max_workers: int = 10) -> list[dict]:
+    """
+    Process a batch of resumes concurrently.
+    Expects input format: [{"candidate_name": "...", "resume_text": "..."}, ...]
+    """
+    results = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = []
+        for r in resumes:
+            name = r.get("candidate_name", "Unknown")
+            text = r.get("resume_text", "")
+            futures.append(executor.submit(parse_resume_text, name, text))
+            
+        for future in futures:
+            try:
+                results.append(future.result())
+            except Exception as e:
+                # Fallback on failure
+                results.append({"error": str(e)})
+                
+    return results

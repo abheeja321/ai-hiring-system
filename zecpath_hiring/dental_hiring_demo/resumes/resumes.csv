@@ -1,0 +1,10 @@
+Candidate_ID,Name,Role_Applied,Qualification,Experience,Skills,Communication_Level,Anomaly_Flag,Resume_Quality
+CAND001,Rahul Menon,General Dentist,BDS,3 years,"Root canal, diagnosis, general care",Excellent,None,Good
+CAND002,Arya S,General Dentist,BDS,Fresher,"Cleaning, fillings",Average,Experience Gap,Medium
+CAND003,John K,General Dentist,BDS,None,"Limited, observation only",Poor,Missing Skills,Poor
+CAND004,Dr. Sarah,Orthodontist,MDS Orthodontics,4 years,"Invisalign, Braces, 3D Scanning",Excellent,None,Good
+CAND005,Dr. FakeCert,Orthodontist,BDS,1 year,Basic braces,Average,Fake Certification claimed,Poor
+CAND006,Dr. Emily,Pediatric Dentist,MDS Pediatric,2 years,"Behavior management, sealants",Excellent,None,Good
+CAND007,Dr. Overqual,Pediatric Dentist,MDS Pediatric + PhD,15 years,"Advanced surgery, research",Excellent,Overqualified,Good
+CAND008,Dr. Smith,Implantologist,MDS Prosthodontics,6 years,"All-on-4, Sinus lift, Grafting",Excellent,None,Good
+CAND009,Dr. Mismatch,Implantologist,MDS Endodontics,5 years,"Root canals, apicoectomy",Good,Skill Mismatch,Medium

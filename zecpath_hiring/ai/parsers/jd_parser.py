@@ -1,4 +1,5 @@
 import re
+from functools import lru_cache
 
 from .common import normalize_text
 
@@ -9,6 +10,7 @@ JD_SKILL_HINTS = [
 ]
 
 
+@lru_cache(maxsize=128)
 def parse_job_description(title: str, text: str) -> dict:
     normalized = normalize_text(text)
     lowered = normalized.lower()

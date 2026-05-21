@@ -1,0 +1,10 @@
+Candidate_ID,Name,Job_ID,Final_Score,Decision,Reasoning
+CAND001,Rahul Menon,DEN001,91.5,Selected,Strong ATS and interview performance.
+CAND002,Arya S,DEN001,68.0,Hold,Needs training; decent potential but inexperienced.
+CAND003,John K,DEN001,35.0,Rejected,Failed technical interview and ATS.
+CAND004,Dr. Sarah,DEN002,94.0,Selected,Perfect match for Orthodontics.
+CAND005,Dr. FakeCert,DEN002,20.0,Rejected,Integrity flags raised during screening.
+CAND006,Dr. Emily,DEN003,92.0,Selected,Excellent pediatric skills.
+CAND007,Dr. Overqual,DEN003,85.0,Hold,"Overqualified, flight risk. Verify salary expectations."
+CAND008,Dr. Smith,DEN004,95.0,Selected,Extensive implant experience.
+CAND009,Dr. Mismatch,DEN004,45.0,Rejected,Endodontic specialist applying for surgical implant role.

@@ -1,0 +1,7 @@
+Job ID: DEN001
+Role: General Dentist
+Qualification: BDS
+Experience: 2+ years
+Skills: Clinical diagnosis, communication
+Location: Kochi
+Salary: ₹40,000/month

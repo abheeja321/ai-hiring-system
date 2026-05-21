@@ -9,7 +9,13 @@ DEFAULT_ELIGIBILITY_RULES = {
 
 
 def _candidate_skill_names(candidate: dict) -> set[str]:
-    return {skill.get("name", "").lower() for skill in candidate.get("skills", [])}
+    skills = set()
+    for skill in candidate.get("skills", []):
+        if isinstance(skill, dict):
+            skills.add(skill.get("name", "").lower())
+        else:
+            skills.add(str(skill).lower())
+    return skills
 
 
 def _candidate_location(candidate: dict) -> str:
@@ -18,7 +24,18 @@ def _candidate_location(candidate: dict) -> str:
 
 
 def _candidate_experience_years(candidate: dict) -> float:
-    months = sum(int(item.get("duration_months", 0)) for item in candidate.get("experience", []))
+    # Check if direct experience_years key exists first (from demo datasets)
+    if "experience_years" in candidate:
+        try:
+            return float(candidate["experience_years"])
+        except (ValueError, TypeError):
+            pass
+            
+    months = 0
+    for item in candidate.get("experience", []):
+        if isinstance(item, dict):
+            months += int(item.get("duration_months", 0))
+            
     return round(months / 12, 2)
 
 

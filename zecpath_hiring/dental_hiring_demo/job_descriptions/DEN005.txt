@@ -1,0 +1,7 @@
+Job ID: DEN005
+Role: Dental AI Researcher
+Qualification: BDS + Data Science
+Experience: 0-2 years
+Skills: Python, Clinical NLP, Research
+Location: Remote
+Salary: ₹70,000/month

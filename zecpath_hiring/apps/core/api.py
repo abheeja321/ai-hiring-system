@@ -31,7 +31,7 @@ class CandidateProfileViewSet(viewsets.ModelViewSet):
 
 class HiringRunViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, DjangoModelPermissions]
-    queryset = HiringRun.objects.all().order_by("-created_at")
+    queryset = HiringRun.objects.select_related("candidate", "job").all().order_by("-created_at")
     serializer_class = HiringRunSerializer
 
     @action(detail=False, methods=["post"])
@@ -101,7 +101,7 @@ class HiringRunViewSet(viewsets.ModelViewSet):
 
 class AIArtifactViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated, DjangoModelPermissions]
-    queryset = AIArtifact.objects.all().order_by("-created_at")
+    queryset = AIArtifact.objects.select_related("candidate", "job").all().order_by("-created_at")
     serializer_class = AIArtifactSerializer
 
 

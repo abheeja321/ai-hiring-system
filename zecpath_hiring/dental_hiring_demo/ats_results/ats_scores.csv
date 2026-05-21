@@ -1,0 +1,10 @@
+Candidate_ID,Name,Job_ID,ATS_Score_Pct,Keyword_Match,Experience_Match
+CAND001,Rahul Menon,DEN001,92,High,Matched
+CAND002,Arya S,DEN001,71,Medium,Under
+CAND003,John K,DEN001,40,Low,Under
+CAND004,Dr. Sarah,DEN002,95,High,Matched
+CAND005,Dr. FakeCert,DEN002,45,Low,Under
+CAND006,Dr. Emily,DEN003,90,High,Matched
+CAND007,Dr. Overqual,DEN003,99,High,Over
+CAND008,Dr. Smith,DEN004,96,High,Matched
+CAND009,Dr. Mismatch,DEN004,55,Low,Matched

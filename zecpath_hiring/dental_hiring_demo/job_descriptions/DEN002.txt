@@ -1,0 +1,7 @@
+Job ID: DEN002
+Role: Orthodontist
+Qualification: MDS Orthodontics
+Experience: 3+ years
+Skills: Braces, Aligners, Facial growth analysis
+Location: Bangalore
+Salary: ₹80,000/month
