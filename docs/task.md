@@ -1,0 +1,8 @@
+- `[/]` 1. Fix ATS Scoring Bug (`scoring.py`)
+  - `[ ]` Handle string vs dict formats for candidate skills.
+- `[ ]` 2. Create Final System Validation Script (`final_system_validation.py`)
+  - `[ ]` Write edge-case mocked inputs.
+  - `[ ]` Assert pipeline doesn't crash on null/invalid inputs.
+- `[ ]` 3. Verification & Bug Fix Report
+  - `[ ]` Run the validation script.
+  - `[ ]` Create walkthrough/bug fix report artifact.
